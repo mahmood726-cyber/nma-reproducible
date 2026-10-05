@@ -1,10 +1,10 @@
 {
  "mode": "full",
- "all_ok": false,
- "when": "2026-10-05 16:21 UTC",
- "sha": "03ded3166bd5babd992fb9e14a957672a7410f0e",
- "run_id": "37339317691",
- "run_url": "https://github.com/mahmood726-cyber/nma-reproducible/actions/runs/37339317691",
+ "all_ok": true,
+ "when": "2026-10-05 16:31 UTC",
+ "sha": "3c1bd2ead62909388ae7f6830207d29d0b11d0fb",
+ "run_id": "37340617989",
+ "run_url": "https://github.com/mahmood726-cyber/nma-reproducible/actions/runs/37340617989",
  "platforms": [
   {
    "platform": "Docker (canonical)",
@@ -31,6 +31,6 @@
    "summary": "48/48 numbers reproduced"
   }
  ],
- "compare": "failure",
+ "compare": "success",
  "mode_note": "Full validation: every number in the paper."
 }
