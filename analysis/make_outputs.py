@@ -131,9 +131,12 @@ def main():
                 for k, v in m.items():
                     checks += 1; ok_checks += v <= TOL[k]; worst[GROUP[k]] = max(worst[GROUP[k]], v)
                 row.update(m); row["within_tolerance"] = all(v <= TOL[k] for k, v in m.items())
+                for k, v in m.items():
+                    if not v <= TOL[k]: print(f"OUTSIDE TOLERANCE: {ds} ({f['method_random_ci']}) {k} = {v:.3e} > {TOL[k]}")
                 row.update(n=f["n"], netmeta_tau2=f["tau2"], netmeta_I2=f["I2"], netmeta_Q=f["Q"], netmeta_df_Q=f["df_Q"])   # distinct names: "Q", "tau2", "I2" are discrepancies
             else:
                 same = f["ok"] == g["ok"]; ok_checks += same; row["within_tolerance"] = same
+                if not same: print(f"REFUSAL MISMATCH: {ds} ({f['method_random_ci']}): netmeta {'fits' if f['ok'] else 'refuses'}, app {'fits' if g['ok'] else 'refuses'}")
             rows.append(row)
     both = [r for r in rows if r["netmeta_ok"] and r["app_ok"]]
     st.update({"analyses": len(rows), "netmeta_fitted": sum(r["netmeta_ok"] for r in rows), "netmeta_refused": sum(not r["netmeta_ok"] for r in rows),

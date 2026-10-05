@@ -9,7 +9,8 @@ FROM rocker/r-ver:4.6.0
 COPY --from=node /usr/local/bin/node /usr/local/bin/node
 ENV DEBIAN_FRONTEND=noninteractive PYTHONDONTWRITEBYTECODE=1 PIP_NO_CACHE_DIR=1 MPLBACKEND=Agg \
     OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
-RUN apt-get update && apt-get install -y --no-install-recommends python3 python3-venv && rm -rf /var/lib/apt/lists/*
+# libglpk40: system library of igraph, which netmeta needs
+RUN apt-get update && apt-get install -y --no-install-recommends python3 python3-venv libglpk40 && rm -rf /var/lib/apt/lists/*
 WORKDIR /work
 COPY bench/install_r_packages.R bench/install_r_packages.R
 RUN Rscript bench/install_r_packages.R
