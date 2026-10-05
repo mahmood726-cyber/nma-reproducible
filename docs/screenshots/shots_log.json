@@ -1,0 +1,636 @@
+{
+ "dpr": 4,
+ "viewport": [
+  640,
+  900
+ ],
+ "regions": {
+  "d1_data": {
+   "clip": {
+    "x": 25,
+    "y": 383,
+    "width": 590,
+    "height": 418
+   },
+   "fonts": [
+    [
+     13.6,
+     4
+    ],
+    [
+     14.08,
+     4
+    ],
+    [
+     14.08,
+     43
+    ],
+    [
+     12,
+     44
+    ],
+    [
+     12,
+     23
+    ],
+    [
+     12,
+     94
+    ],
+    [
+     14.08,
+     58
+    ],
+    [
+     12,
+     28
+    ],
+    [
+     12,
+     12
+    ],
+    [
+     12.8,
+     10
+    ],
+    [
+     14.4,
+     10
+    ]
+   ]
+  },
+  "d2_options": {
+   "clip": {
+    "x": 25,
+    "y": 804,
+    "width": 590,
+    "height": 491
+   },
+   "fonts": [
+    [
+     13.6,
+     7
+    ],
+    [
+     14.08,
+     19
+    ],
+    [
+     12,
+     88
+    ],
+    [
+     14.08,
+     5
+    ],
+    [
+     14.08,
+     35
+    ],
+    [
+     14.08,
+     35
+    ],
+    [
+     14.08,
+     14
+    ],
+    [
+     14.08,
+     10
+    ],
+    [
+     14.4,
+     10
+    ],
+    [
+     14.4,
+     10
+    ],
+    [
+     14.4,
+     10
+    ],
+    [
+     14.4,
+     10
+    ],
+    [
+     14.4,
+     10
+    ],
+    [
+     14.4,
+     10
+    ]
+   ]
+  },
+  "d3_network": {
+   "clip": {
+    "x": 29,
+    "y": 1724,
+    "width": 582,
+    "height": 438
+   },
+   "fonts": [
+    [
+     12,
+     54
+    ],
+    [
+     12.8,
+     2
+    ],
+    [
+     12,
+     84
+    ]
+   ]
+  },
+  "d3_stats": {
+   "clip": {
+    "x": 25,
+    "y": 1298,
+    "width": 590,
+    "height": 138
+   },
+   "fonts": [
+    [
+     11.84,
+     7
+    ],
+    [
+     15.2,
+     2
+    ],
+    [
+     11.84,
+     9
+    ],
+    [
+     15.2,
+     2
+    ],
+    [
+     11.84,
+     10
+    ],
+    [
+     11.84,
+     9
+    ],
+    [
+     11.84,
+     2
+    ],
+    [
+     15.2,
+     6
+    ],
+    [
+     11.84,
+     2
+    ],
+    [
+     15.2,
+     5
+    ]
+   ]
+  },
+  "d4_het": {
+   "clip": {
+    "x": 8,
+    "y": 2187,
+    "width": 624,
+    "height": 229
+   },
+   "fonts": [
+    [
+     12.48,
+     31
+    ],
+    [
+     13.12,
+     25
+    ],
+    [
+     13.12,
+     14
+    ],
+    [
+     13.12,
+     11
+    ],
+    [
+     13.12,
+     22
+    ],
+    [
+     13.12,
+     5
+    ],
+    [
+     13.12,
+     31
+    ],
+    [
+     13.12,
+     30
+    ],
+    [
+     13.12,
+     31
+    ],
+    [
+     13.12,
+     31
+    ],
+    [
+     13.12,
+     29
+    ]
+   ]
+  },
+  "d4_ref": {
+   "clip": {
+    "x": 8,
+    "y": 2419,
+    "width": 624,
+    "height": 198
+   },
+   "fonts": [
+    [
+     12.48,
+     40
+    ],
+    [
+     13.12,
+     9
+    ],
+    [
+     13.12,
+     13
+    ],
+    [
+     13.12,
+     23
+    ],
+    [
+     13.12,
+     19
+    ],
+    [
+     13.12,
+     12
+    ],
+    [
+     13.12,
+     6
+    ],
+    [
+     13.12,
+     19
+    ],
+    [
+     13.12,
+     13
+    ],
+    [
+     13.12,
+     6
+    ],
+    [
+     13.12,
+     19
+    ],
+    [
+     13.12,
+     13
+    ],
+    [
+     13.12,
+     6
+    ]
+   ]
+  },
+  "d5_rank": {
+   "clip": {
+    "x": 8,
+    "y": 2621,
+    "width": 624,
+    "height": 283
+   },
+   "fonts": [
+    [
+     12.48,
+     17
+    ],
+    [
+     11.52,
+     9
+    ],
+    [
+     11.52,
+     7
+    ],
+    [
+     11.52,
+     7
+    ],
+    [
+     13.6,
+     5
+    ],
+    [
+     13.6,
+     5
+    ],
+    [
+     13.6,
+     5
+    ],
+    [
+     13.6,
+     5
+    ],
+    [
+     13.6,
+     5
+    ],
+    [
+     13.6,
+     4
+    ],
+    [
+     13.6,
+     4
+    ],
+    [
+     13.6,
+     4
+    ],
+    [
+     12,
+     16
+    ],
+    [
+     12,
+     7
+    ],
+    [
+     12,
+     268
+    ]
+   ]
+  },
+  "d5_league": {
+   "clip": {
+    "x": 8,
+    "y": 2908,
+    "width": 624,
+    "height": 308
+   },
+   "fonts": [
+    [
+     12.48,
+     51
+    ],
+    [
+     12.48,
+     4
+    ],
+    [
+     11.52,
+     12
+    ],
+    [
+     12.48,
+     4
+    ],
+    [
+     11.52,
+     12
+    ],
+    [
+     12.48,
+     4
+    ],
+    [
+     11.52,
+     12
+    ],
+    [
+     12.48,
+     4
+    ],
+    [
+     11.52,
+     12
+    ],
+    [
+     12.48,
+     4
+    ],
+    [
+     11.52,
+     12
+    ],
+    [
+     12.48,
+     4
+    ],
+    [
+     11.52,
+     12
+    ],
+    [
+     12.48,
+     4
+    ],
+    [
+     11.52,
+     12
+    ],
+    [
+     12.48,
+     4
+    ],
+    [
+     11.52,
+     12
+    ],
+    [
+     12.48,
+     4
+    ],
+    [
+     11.52,
+     12
+    ],
+    [
+     12.48,
+     4
+    ],
+    [
+     11.52,
+     12
+    ],
+    [
+     12.48,
+     4
+    ],
+    [
+     11.52,
+     12
+    ],
+    [
+     12.48,
+     4
+    ],
+    [
+     11.52,
+     12
+    ]
+   ]
+  },
+  "d6_t": {
+   "clip": {
+    "x": 8,
+    "y": 2419,
+    "width": 624,
+    "height": 198
+   },
+   "fonts": [
+    [
+     12.48,
+     40
+    ],
+    [
+     13.12,
+     9
+    ],
+    [
+     13.12,
+     13
+    ],
+    [
+     13.12,
+     23
+    ],
+    [
+     13.12,
+     19
+    ],
+    [
+     13.12,
+     12
+    ],
+    [
+     13.12,
+     6
+    ],
+    [
+     13.12,
+     19
+    ],
+    [
+     13.12,
+     13
+    ],
+    [
+     13.12,
+     6
+    ],
+    [
+     13.12,
+     19
+    ],
+    [
+     13.12,
+     13
+    ],
+    [
+     13.12,
+     6
+    ]
+   ]
+  },
+  "d6_export": {
+   "clip": {
+    "x": 25,
+    "y": 1527,
+    "width": 590,
+    "height": 107
+   },
+   "fonts": [
+    [
+     13.6,
+     20
+    ],
+    [
+     13.6,
+     19
+    ],
+    [
+     13.6,
+     13
+    ],
+    [
+     13.6,
+     11
+    ],
+    [
+     13.6,
+     20
+    ],
+    [
+     13.6,
+     12
+    ],
+    [
+     13.6,
+     5
+    ]
+   ]
+  },
+  "d6_refuse": {
+   "clip": {
+    "x": 25,
+    "y": 1431,
+    "width": 590,
+    "height": 116
+   },
+   "fonts": [
+    [
+     13.12,
+     5
+    ],
+    [
+     13.12,
+     138
+    ]
+   ]
+  }
+ },
+ "states": {
+  "step2": {
+   "het": "τ² (DerSimonian–Laird), τ\t0.5989, 0.7739\nI² (95% CI)\t88.6% (84.4% to 91.7%)\nTotal\tQ = 202.62, df = 23, p < 0.0001\nWithin designs (heterogeneity)\tQ = 187.40, df = 16, p < 0.0001\nBetween designs (inconsistency)\tQ = 15.22, df = 7, p = 0.0333",
+   "ref": "Treatment\tvs A (95% CI)\t95% prediction interval\tp\nB\t1.52 (0.74 to 3.12)\t0.26 to 8.93\t0.2582\nC\t2.08 (1.36 to 3.20)\t0.39 to 10.99\t0.0008\nD\t2.47 (1.10 to 5.52)\t0.40 to 15.11\t0.0284",
+   "rank": "Treatment\nP-score\nP(best)\nD\n83.8%\n62.8%\nC\n71.0%\n29.3%\nB\n40.4%\n7.9%\nA\n4.8%\n0.0%\n\nP-score (netmeta netrank): the mean certainty that a treatment is better than each of the others, with larger estimates better. P(best): probability of ranking first in 10,000 draws from the estimates (fixed seed). Neither is an effect size — read them with the estimates and their intervals.",
+   "notes": "Notes\nMulti-arm correction applied to 2 studies (1, 2): correlated contrasts, as netmeta."
+  },
+  "step6": {
+   "het": "τ² (DerSimonian–Laird), τ\t0.5989, 0.7739\nI² (95% CI)\t88.6% (84.4% to 91.7%)\nTotal\tQ = 202.62, df = 23, p < 0.0001\nWithin designs (heterogeneity)\tQ = 187.40, df = 16, p < 0.0001\nBetween designs (inconsistency)\tQ = 15.22, df = 7, p = 0.0333",
+   "ref": "Treatment\tvs A (95% CI)\t95% prediction interval\tp\nB\t1.52 (0.71 to 3.25)\t0.26 to 8.93\t0.2698\nC\t2.08 (1.32 to 3.27)\t0.39 to 10.99\t0.0028\nD\t2.47 (1.05 to 5.78)\t0.40 to 15.11\t0.0387",
+   "rank": "Treatment\nP-score\nP(best)\nD\n83.3%\n62.8%\nC\n70.9%\n29.3%\nB\n40.6%\n7.9%\nA\n5.2%\n0.0%\n\nP-score (netmeta netrank): the mean certainty that a treatment is better than each of the others, with larger estimates better. P(best): probability of ranking first in 10,000 draws from the estimates (fixed seed). Neither is an effect size — read them with the estimates and their intervals.",
+   "notes": "Notes\nMulti-arm correction applied to 2 studies (1, 2): correlated contrasts, as netmeta."
+  },
+  "step6_refusal": {
+   "het": "",
+   "ref": "",
+   "rank": "",
+   "notes": "Notes\nProblem in multi-arm or duplicated studies (netmeta refuses these too): study '1' has an incomplete set of comparisons (2 of 3 for 3 arms)"
+  }
+ },
+ "errors": []
+}

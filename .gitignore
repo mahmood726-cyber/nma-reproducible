@@ -1,0 +1,9 @@
+*.pyc
+*.sqlite
+.venv/
+__pycache__/
+docs/screenshots/*.tif
+docs/screenshots/_full_*.png
+outputs/
+results/
+venv/

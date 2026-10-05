@@ -1,0 +1,14 @@
+{
+  "title": "Network meta-analysis in the browser: a tool validated against the R package netmeta",
+  "description": "The allmeta NMA app (validated at allmeta commit 6e753c6) and a one-command validation against the R package netmeta 3.7-0 on all 13 datasets netmeta ships (364 studies, 52 multi-arm). The app fits common- and random-effects (DerSimonian-Laird) network meta-analysis of study contrasts with multi-arm studies handled, refuses incomplete or inconsistent multi-arm studies as netmeta does, and reports the league table, normal or t-based CIs, prediction intervals, Q, tau^2, I^2 with its CI, the design-based decomposition of Q, and P-scores. Across 26 analyses (13 datasets, two CI methods) the app agrees with netmeta on all 26: 24 within 1e-9 and the same 2 refusals; 410/410 checks pass. Includes the corpus builder, R reference analyses, the engine runner, the analysis that regenerates the article's tables, figures and statistics with a PASS/FAIL check of every number, a Docker image (canonical environment: R 4.6.0, netmeta 3.7-0, Node 24.15.0) and CI on Linux, Windows, macOS and Docker. Earlier app versions had known issues, fixed in allmeta PR #78 (see CHANGELOG.md).",
+  "upload_type": "software",
+  "license": "MIT",
+  "access_right": "open",
+  "creators": [{"name": "Ahmad, Mahmood"}],
+  "keywords": ["network meta-analysis", "multi-arm trials", "inconsistency", "P-scores", "netmeta", "software validation", "reproducibility", "browser"],
+  "related_identifiers": [
+    {"identifier": "https://github.com/mahmood726-cyber/nma-reproducible", "relation": "isSupplementTo", "scheme": "url"},
+    {"identifier": "https://github.com/mahmood726-cyber/allmeta", "relation": "isDerivedFrom", "scheme": "url"},
+    {"identifier": "10.5281/zenodo.20584424", "relation": "isDerivedFrom", "scheme": "doi"}
+  ]
+}

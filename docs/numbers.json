@@ -1,0 +1,191 @@
+{
+ "source": "Local full run (Windows, R 4.6.0, netmeta 3.7-0, Node 24.15.0) at allmeta 6e753c6; CI confirms on Linux, Windows, macOS and Docker",
+ "numbers": [
+  {
+   "quantity": "Datasets distributed with netmeta",
+   "printed": "13",
+   "stats_key": "datasets",
+   "value": 13
+  },
+  {
+   "quantity": "Studies in those datasets",
+   "printed": "364",
+   "stats_key": "studies_total",
+   "value": 364
+  },
+  {
+   "quantity": "Study contrasts",
+   "printed": "506",
+   "stats_key": "contrasts_total",
+   "value": 506
+  },
+  {
+   "quantity": "Multi-arm studies",
+   "printed": "52",
+   "stats_key": "multiarm_total",
+   "value": 52
+  },
+  {
+   "quantity": "Fewest treatments in a network",
+   "printed": "3",
+   "stats_key": "treatments_min",
+   "value": 3
+  },
+  {
+   "quantity": "Most treatments in a network",
+   "printed": "22",
+   "stats_key": "treatments_max",
+   "value": 22
+  },
+  {
+   "quantity": "Analyses (datasets x two CI methods)",
+   "printed": "26",
+   "stats_key": "analyses",
+   "value": 26
+  },
+  {
+   "quantity": "Analyses agreeing",
+   "printed": "26",
+   "stats_key": "within_tolerance",
+   "value": 26
+  },
+  {
+   "quantity": "Analyses netmeta completes",
+   "printed": "24",
+   "stats_key": "netmeta_fitted",
+   "value": 24
+  },
+  {
+   "quantity": "Analyses netmeta refuses",
+   "printed": "2",
+   "stats_key": "netmeta_refused",
+   "value": 2
+  },
+  {
+   "quantity": "Refusals the app matches",
+   "printed": "2",
+   "stats_key": "refusals_matched",
+   "value": 2
+  },
+  {
+   "quantity": "Individual checks",
+   "printed": "410",
+   "stats_key": "checks_total",
+   "value": 410
+  },
+  {
+   "quantity": "Individual checks passed",
+   "printed": "410",
+   "stats_key": "checks_passed",
+   "value": 410
+  },
+  {
+   "quantity": "Estimates and intervals within 10^-12",
+   "printed": "yes",
+   "stats_key": "estimates_below_1e-12",
+   "value": 1
+  },
+  {
+   "quantity": "Every quantity within 10^-10",
+   "printed": "yes",
+   "stats_key": "all_below_1e-10",
+   "value": 1
+  },
+  {
+   "quantity": "Worked example: studies",
+   "printed": "24",
+   "stats_key": "ex_studies",
+   "value": 24
+  },
+  {
+   "quantity": "Worked example: three-arm studies",
+   "printed": "2",
+   "stats_key": "ex_multiarm",
+   "value": 2
+  },
+  {
+   "quantity": "Worked example: tau^2",
+   "printed": "0.60",
+   "stats_key": "ex_tau2",
+   "value": 0.5988752589247014
+  },
+  {
+   "quantity": "Worked example: I^2 (%)",
+   "printed": "88.6",
+   "stats_key": "ex_I2",
+   "value": 88.64863876582156
+  },
+  {
+   "quantity": "Worked example: I^2 lower limit (%)",
+   "printed": "84.4",
+   "stats_key": "ex_I2_lo",
+   "value": 84.40330785832583
+  },
+  {
+   "quantity": "Worked example: I^2 upper limit (%)",
+   "printed": "91.7",
+   "stats_key": "ex_I2_hi",
+   "value": 91.73841474215455
+  },
+  {
+   "quantity": "Worked example: Q between designs",
+   "printed": "15.2",
+   "stats_key": "ex_Qbetween",
+   "value": 15.220337020893254
+  },
+  {
+   "quantity": "Worked example: df between designs",
+   "printed": "7",
+   "stats_key": "ex_dfbetween",
+   "value": 7
+  },
+  {
+   "quantity": "Worked example: p between designs",
+   "printed": "0.03",
+   "stats_key": "ex_pbetween",
+   "value": 0.03327647245157123
+  },
+  {
+   "quantity": "Worked example: OR group counselling vs no intervention",
+   "printed": "2.47",
+   "stats_key": "ex_or_D",
+   "value": 2.465262291221884
+  },
+  {
+   "quantity": "Worked example: its lower 95% limit",
+   "printed": "1.10",
+   "stats_key": "ex_or_D_lo",
+   "value": 1.1003226747324766
+  },
+  {
+   "quantity": "Worked example: its upper 95% limit",
+   "printed": "5.52",
+   "stats_key": "ex_or_D_hi",
+   "value": 5.523396276458824
+  },
+  {
+   "quantity": "Worked example: prediction interval lower",
+   "printed": "0.40",
+   "stats_key": "ex_or_D_pi_lo",
+   "value": 0.4021575249717421
+  },
+  {
+   "quantity": "Worked example: prediction interval upper",
+   "printed": "15.11",
+   "stats_key": "ex_or_D_pi_hi",
+   "value": 15.112282593612074
+  },
+  {
+   "quantity": "Worked example: treatment with the highest P-score",
+   "printed": "D",
+   "stats_key": "ex_best",
+   "value": "D"
+  },
+  {
+   "quantity": "Worked example: its P-score",
+   "printed": "0.84",
+   "stats_key": "ex_best_pscore",
+   "value": 0.8375827418402236
+  }
+ ]
+}

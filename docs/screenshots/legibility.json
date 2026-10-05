@@ -1,0 +1,129 @@
+[
+ {
+  "step": "step1",
+  "width_px": 2392,
+  "height_px": 1674,
+  "aspect_h_over_w": 0.7,
+  "tiff_dpi_at_170mm": 357,
+  "body_text_pt_min_over_panels": 9.7,
+  "smallest_text_pt": 9.7,
+  "per_panel_body_smallest_pt": [
+   [
+    "",
+    9.7,
+    9.7
+   ]
+  ],
+  "label_pt": null
+ },
+ {
+  "step": "step2",
+  "width_px": 2392,
+  "height_px": 1972,
+  "aspect_h_over_w": 0.82,
+  "tiff_dpi_at_170mm": 357,
+  "body_text_pt_min_over_panels": 11.3,
+  "smallest_text_pt": 9.7,
+  "per_panel_body_smallest_pt": [
+   [
+    "",
+    11.3,
+    9.7
+   ]
+  ],
+  "label_pt": null
+ },
+ {
+  "step": "step3",
+  "width_px": 2539,
+  "height_px": 2361,
+  "aspect_h_over_w": 0.93,
+  "tiff_dpi_at_170mm": 379,
+  "body_text_pt_min_over_panels": 9.0,
+  "smallest_text_pt": 9.0,
+  "per_panel_body_smallest_pt": [
+   [
+    "A",
+    9.1,
+    9.1
+   ],
+   [
+    "B",
+    9.0,
+    9.0
+   ]
+  ],
+  "label_pt": 15.9
+ },
+ {
+  "step": "step4",
+  "width_px": 2683,
+  "height_px": 1764,
+  "aspect_h_over_w": 0.66,
+  "tiff_dpi_at_170mm": 401,
+  "body_text_pt_min_over_panels": 9.4,
+  "smallest_text_pt": 9.0,
+  "per_panel_body_smallest_pt": [
+   [
+    "A",
+    9.4,
+    9.0
+   ],
+   [
+    "B",
+    9.4,
+    9.0
+   ]
+  ],
+  "label_pt": 15.1
+ },
+ {
+  "step": "step5",
+  "width_px": 2683,
+  "height_px": 2420,
+  "aspect_h_over_w": 0.9,
+  "tiff_dpi_at_170mm": 401,
+  "body_text_pt_min_over_panels": 8.3,
+  "smallest_text_pt": 8.3,
+  "per_panel_body_smallest_pt": [
+   [
+    "A",
+    8.6,
+    8.3
+   ],
+   [
+    "B",
+    8.3,
+    8.3
+   ]
+  ],
+  "label_pt": 15.1
+ },
+ {
+  "step": "step6",
+  "width_px": 2683,
+  "height_px": 1725,
+  "aspect_h_over_w": 0.64,
+  "tiff_dpi_at_170mm": 401,
+  "body_text_pt_min_over_panels": 9.4,
+  "smallest_text_pt": 9.0,
+  "per_panel_body_smallest_pt": [
+   [
+    "A",
+    9.4,
+    9.0
+   ],
+   [
+    "B",
+    9.4,
+    9.4
+   ],
+   [
+    "C",
+    9.8,
+    9.8
+   ]
+  ],
+  "label_pt": 15.1
+ }
+]

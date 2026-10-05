@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; worker-src 'self' blob:; media-src 'self' blob:; manifest-src 'self'">
+  <link rel="stylesheet" href="../shared/forced-colors.css">
+  <meta name="description" content="Network meta-analysis in the browser, reproducing R netmeta: common and random effects (multi-arm studies handled), league table, prediction intervals, heterogeneity, design-based decomposition of Q, P-scores.">
+  <meta name="color-scheme" content="light dark">
+  <title>Network Meta-Analysis</title>
+  <style>
+    :root {
+      --bg:#f6f4ef; --panel:#fff; --ink:#15181d; --muted:#5c6470;
+      --accent:#2c5e8a; --accent-soft:#e8f0f7; --warn:#b05a1c;
+      --warn-soft:#fbeedd; --border:#d9d5cc; --border-strong:#7a8294;
+      --input-bg:#fbfaf6;
+    }
+    @media (prefers-color-scheme:dark) {
+      :root {
+        --bg:#141618; --panel:#1c1f23; --ink:#e7e4dc; --muted:#98a0ae;
+        --accent:#6aa6d4; --accent-soft:#223044; --warn:#e0a268;
+        --warn-soft:#3a2d1c; --border:#2f343a; --border-strong:#495262;
+        --input-bg:#23272c;
+      }
+    }
+    @media (prefers-reduced-motion:reduce) { * { transition:none !important; animation:none !important; } }
+    * { box-sizing:border-box; }
+    html,body { margin:0; padding:0; }
+    body { font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+           background:var(--bg); color:var(--ink); min-height:100vh; line-height:1.5; }
+    header { padding:2rem clamp(1rem,3vw,3rem) 1rem; border-bottom:1px solid var(--border); background:var(--panel); }
+    header h1 { margin:0 0 0.25rem; font-size:1.5rem; letter-spacing:-0.01em; }
+    header p { margin:0; color:var(--muted); font-size:0.95rem; max-width:72ch; }
+    .layout { display:grid; grid-template-columns:minmax(320px,28rem) 1fr;
+              gap:1.5rem; padding:1.5rem clamp(1rem,3vw,3rem); align-items:start; }
+    @media (max-width:1000px) { .layout { grid-template-columns:1fr; } }
+    .panel { background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:1rem 1.25rem; margin-bottom:1rem; }
+    .panel h2 { margin:0 0 0.75rem; font-size:0.9rem; font-weight:600;
+                text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); }
+    fieldset { border:1px solid var(--border); border-radius:8px; padding:0.75rem 1rem 1rem; margin:0 0 1rem; }
+    legend { padding:0 0.5rem; font-size:0.85rem; font-weight:600; color:var(--accent); }
+    label { display:block; margin-bottom:0.5rem; font-size:0.88rem; }
+    label span.lbl { display:block; margin-bottom:0.15rem; }
+    label span.hint { display:block; color:var(--muted); font-size:0.75rem; margin-top:0.1rem; }
+    input[type="text"],textarea,select {
+      width:100%; padding:0.4rem 0.55rem; border:1px solid var(--border);
+      border-radius:6px; background:var(--input-bg); color:var(--ink); font:inherit; font-size:0.9rem;
+    }
+    textarea { resize:vertical; min-height:12rem; font-family:ui-monospace,"Cascadia Code","SF Mono",Menlo,monospace; font-size:0.8rem; }
+    input:focus,textarea:focus,select:focus { outline:2px solid var(--accent); outline-offset:1px; border-color:var(--accent); }
+    .actions { display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.75rem; padding-top:0.75rem; border-top:1px dashed var(--border); }
+    button { font:inherit; font-size:0.85rem; padding:0.45rem 0.85rem; border-radius:6px;
+             border:1px solid var(--border-strong); background:var(--panel); color:var(--ink); cursor:pointer; }
+    button.primary { background:var(--accent); color:#fff; border-color:var(--accent); }
+    button:hover { filter:brightness(0.96); }
+    button:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+    .stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:0.5rem; margin-top:0.5rem; }
+    .stat { background:var(--accent-soft); padding:0.5rem 0.75rem; border-radius:6px; }
+    .stat .k { display:block; font-size:0.74rem; letter-spacing:0.02em; color:var(--muted); }
+    table.het { width:100%; border-collapse:collapse; font-size:0.82rem; font-variant-numeric:tabular-nums; }
+    table.het th, table.het td { padding:0.3rem 0.5rem; border-bottom:1px solid var(--border); text-align:left; }
+    table.het th { font-weight:600; }
+    .sucra-row { grid-template-columns:8rem 1fr 3.4rem 3.4rem !important; }
+    .stat .v { display:block; font-size:0.95rem; font-weight:600; font-variant-numeric:tabular-nums; }
+    .preview-wrap { position:sticky; top:1rem; }
+    .preview-wrap svg { width:100%; height:auto; background:#fff; display:block; border-radius:6px; }
+    table.league { width:100%; border-collapse:collapse; font-size:0.78rem; font-variant-numeric:tabular-nums; }
+    table.league th, table.league td { padding:0.35rem 0.5rem; border:1px solid var(--border); text-align:center; }
+    /* a11y: explicit dark teal (>=5.4:1 on --accent-soft) — var(--accent)
+       resolved to #4f8d82 on #e8f3f1 = 3.38:1, below WCAG AA 4.5. */
+    table.league th { font-weight:700; background:var(--accent-soft); color:#2f6b60; }
+    table.league td.diag { background:var(--accent-soft); font-weight:700; color:#2f6b60; }
+    table.league td.pos { color:#0d7a27; }
+    table.league td.neg { color:#912121; }
+    .sucra-row { display:grid; grid-template-columns:8rem 1fr 3rem; gap:0.5rem; align-items:center; padding:0.2rem 0; font-size:0.85rem; }
+    .sucra-bar { height:12px; background:var(--border); border-radius:6px; overflow:hidden; position:relative; }
+    .sucra-bar > span { display:block; height:100%; background:linear-gradient(90deg, #2c5e8a 0%, #6aa6d4 100%); border-radius:6px; transition:width 200ms; }
+    .sucra-val { font-weight:700; text-align:right; font-variant-numeric:tabular-nums; }
+    .warn-banner { margin-top:0.5rem; padding:0.5rem 0.75rem; background:var(--warn-soft);
+                   color:var(--warn); border:1px solid var(--warn); border-radius:6px; font-size:0.82rem; display:none; }
+    .warn-banner.is-visible { display:block; }
+    .footer-note { margin:0; color:var(--muted); font-size:0.78rem; text-align:right;
+                   padding:0 clamp(1rem,3vw,3rem) 1.5rem; }
+    .file-input-hidden { display:none; }
+  </style>
+  <link rel="stylesheet" href="../hub/app-style.css">
+  <script src="../shared/build-info.js"></script>
+  <script src="../shared/ma-studies-v1.js"></script>
+  <script src="../shared/ma-comparisons-v1.js"></script>
+  <script src="../shared/nma-multiarm-v1.js"></script>
+  <script src="example-datasets.js"></script>
+  <script src="../shared/ma-methods-v1.js"></script>
+  <script src="../shared/app-flow.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main" style="position:absolute;left:-9999px;top:-9999px;z-index:99999;padding:6px 10px;background:#000;color:#fff;border-radius:4px;text-decoration:none" onfocus="this.style.left='12px';this.style.top='12px'" onblur="this.style.left='-9999px';this.style.top='-9999px'">Skip to main content</a>
+<a id="hub-back" href="../" aria-label="Back to allmeta hub" style="position:fixed;top:12px;left:12px;z-index:99999;padding:6px 12px;background:rgba(28,31,35,0.85);color:#fff;text-decoration:none;border-radius:14px;font:600 12px/1 system-ui,sans-serif;letter-spacing:.04em;box-shadow:0 2px 8px rgba(0,0,0,0.18);transition:opacity .15s ease;opacity:.85" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.85'">← allmeta</a>
+  <header>
+    <h1>Network Meta-Analysis</h1>
+    <p>Frequentist network meta-analysis of study contrasts, as the R package <code>netmeta</code>: common- and random-effects (DerSimonian–Laird) estimates with multi-arm studies handled, league table, prediction intervals, heterogeneity and the design-based decomposition of Q, and P-scores. Checked against <code>netmeta</code> on every dataset it ships.</p>
+    <p style="margin-top:.5rem;padding:.5rem .7rem;border-left:3px solid #b8860b;background:rgba(184,134,11,.08);font-size:.9rem"><strong>Test consistency before interpreting.</strong> The league table and P-scores assume the network is consistent (direct and indirect evidence agree). Run a node-split / design-by-treatment check in <a href="../nma-inconsistency/">NMA Inconsistency</a> first; if inconsistency is present, the pooled estimates and rankings can be misleading.</p>
+  </header>
+
+  <main id="main" class="layout">
+    <section>
+      <div class="panel" aria-label="Input form">
+        <h2>Contrasts</h2>
+        <fieldset>
+          <legend>Data</legend>
+          <label>
+            <span class="lbl">CSV: <code>study, treatment1, treatment2, estimate, SE</code></span>
+            <textarea id="f-data" spellcheck="false" aria-label="Contrasts"></textarea>
+            <span class="hint">Each row is one pairwise contrast. Effect is <code>treatment2 − treatment1</code> on the analysis scale (e.g. log OR). A multi-arm study needs a row for every pair of its arms.</span>
+          </label>
+          <label>
+            <span class="lbl">Example data (datasets shipped with the R package netmeta)</span>
+            <select id="f-example" aria-label="Example dataset">
+              <option value="generic">Generic example (5 treatments)</option>
+              <option value="Senn2013">Senn2013: diabetes, HbA1c (26 studies, 10 treatments)</option>
+              <option value="smokingcessation">smokingcessation: smoking cessation (24 studies, 4)</option>
+              <option value="Baker2009">Baker2009: COPD exacerbations (38 studies, 8)</option>
+              <option value="Dogliotti2014">Dogliotti2014: atrial fibrillation, stroke (19 studies, 8)</option>
+              <option value="Franchini2012">Franchini2012: Parkinson's disease (7 studies, 5)</option>
+              <option value="Gurusamy2011">Gurusamy2011: liver transplantation (11 studies, 6)</option>
+              <option value="Linde2015">Linde2015: depression, response (59 studies, 9)</option>
+              <option value="Linde2016">Linde2016: depression in primary care (93 studies, 22)</option>
+              <option value="Stowe2010">Stowe2010: Parkinson's disease (29 studies, 4)</option>
+              <option value="Woods2010">Woods2010: survival counts (3 studies, 4)</option>
+              <option value="dietaryfat">dietaryfat: mortality rate (10 studies, 3)</option>
+            </select>
+            <span class="hint">Choose a dataset, then press <em>Load example</em>.</span>
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>Options</legend>
+          <label>
+            <span class="lbl">Reference treatment</span>
+            <select id="f-ref" aria-label="Reference treatment"></select>
+            <span class="hint">Set to the comparator for the league table; all effects are re-expressed relative to it.</span>
+          </label>
+          <label>
+            <span class="lbl">Model</span>
+            <select id="f-model" aria-label="Model">
+              <option value="fe" selected>Common effect (inverse-variance)</option>
+              <option value="re">Random effects (DerSimonian–Laird τ²)</option>
+            </select>
+          </label>
+          <label>
+            <span class="lbl">Random-effects confidence intervals</span>
+            <select id="f-ci" aria-label="Random-effects confidence intervals">
+              <option value="classic" selected>Normal (netmeta default)</option>
+              <option value="t-dist">t distribution (degrees of freedom of Q)</option>
+            </select>
+          </label>
+          <label>
+            <span class="lbl">Ranking: which direction is better?</span>
+            <select id="f-dir" aria-label="Direction of benefit">
+              <option value="desirable" selected>Smaller estimates (e.g. log OR of a harmful event)</option>
+              <option value="undesirable">Larger estimates (e.g. response, survival)</option>
+            </select>
+          </label>
+          <label>
+            <span class="lbl">Show estimates</span>
+            <select id="f-scale" aria-label="Scale of displayed estimates">
+              <option value="log" selected>On the analysis scale, as entered</option>
+              <option value="exp">Exponentiated (OR, RR, HR, IRR)</option>
+            </select>
+          </label>
+          <label>
+            <span class="lbl">Plot title</span>
+            <input type="text" id="f-title" placeholder="e.g. Antihypertensives — incident HF" aria-label="Plot title">
+          </label>
+        </fieldset>
+
+        <div id="stats-wrap"></div>
+        <div id="warn-banner" class="warn-banner" role="status" aria-live="polite"></div>
+
+        <div class="actions">
+          <button type="button" id="btn-svg" class="primary">Download network SVG</button>
+          <button type="button" id="btn-league">Download league CSV</button>
+          <button type="button" id="btn-json">Download JSON</button>
+          <button type="button" id="btn-import">Import JSON</button>
+          <button type="button" id="btn-bus" title="Load arm-level contrasts written by Search → Screen → Extract">Load from extraction</button>
+          <button type="button" id="btn-example">Load example</button>
+          <button type="button" id="btn-reset">Reset</button>
+          <input type="file" id="file-import" class="file-input-hidden" accept="application/json,.json" aria-label="File import">
+        </div>
+      </div>
+    </section>
+
+    <section class="preview-wrap">
+      <div class="panel" aria-label="Network graph">
+        <h2>Network graph</h2>
+        <div id="svg-host"></div>
+      </div>
+      <div class="panel" aria-label="Heterogeneity">
+        <h2>Heterogeneity and inconsistency</h2>
+        <div id="het-host"></div>
+      </div>
+      <div class="panel" aria-label="Estimates versus reference">
+        <h2>Estimates versus the reference treatment</h2>
+        <div id="ref-host" style="overflow-x:auto"></div>
+      </div>
+      <div class="panel" aria-label="Ranking">
+        <h2>Ranking: P-scores</h2>
+        <div id="sucra-host"></div>
+      </div>
+      <div class="panel" aria-label="League table">
+        <h2>League table: row treatment versus column treatment</h2>
+        <div id="league-host" style="overflow-x:auto"></div>
+      </div>
+    
+      <div id="alm-flow-mount" aria-live="polite"></div>
+</section>
+  </main>
+
+  <p class="footer-note">Network meta-analysis of study contrasts by generalised least squares, as the R package <code>netmeta</code> (Rücker 2012; Balduzzi et al. 2023): a multi-arm study's correlated contrasts are handled through its arm variances; random effects use a common τ² by the generalised DerSimonian–Laird estimator, with τ²/2 covariance between a multi-arm study's contrasts. Studies with an incomplete, duplicated or internally inconsistent set of comparisons are refused, as in <code>netmeta</code>. Prediction intervals use t with the degrees of freedom of Q (when there are at least 2). The decomposition of Q into within-design heterogeneity and between-design inconsistency follows Krahn et al. (2013). P-scores: Rücker &amp; Schwarzer (2015). Checked against <code>netmeta</code> 3.7.0 on all its example datasets (<code>hub/shared/tests/nma-netmeta-parity.spec.mjs</code>). Node-splitting is in <a href="../nma-inconsistency/">NMA Inconsistency</a>.</p>
+
+  <script>
+    // Cycle 7.1: exact qnorm(0.975) for 95% CIs (was 1.96; ~1.3e-5 drift vs metafor).
+    var Z975 = 1.959963984540054;
+
+  (function () {
+    "use strict";
+    const LS_KEY = "nma-v1";
+    // The arm-level contrast bus is read via window.MaComparisons (see
+    // busContrastsText); no raw localStorage key is referenced here.
+
+    const fields = { data:"f-data", ref:"f-ref", model:"f-model", ci:"f-ci", dir:"f-dir", scale:"f-scale", title:"f-title" };
+    let _pendingRef = null, _lastAnalysis = null;
+    const EXAMPLE = [
+      "# study, treatment1, treatment2, est, SE   (logOR)",
+      "TRIAL1, Placebo, DrugA, -0.22, 0.12",
+      "TRIAL2, Placebo, DrugA, -0.31, 0.14",
+      "TRIAL3, Placebo, DrugB, -0.15, 0.11",
+      "TRIAL4, Placebo, DrugB, -0.19, 0.10",
+      "TRIAL5, Placebo, DrugC, -0.05, 0.13",
+      "TRIAL6, DrugA, DrugB, 0.08, 0.13",
+      "TRIAL7, DrugA, DrugC, 0.18, 0.15",
+      "TRIAL8, DrugB, DrugC, 0.10, 0.14",
+      "TRIAL9, DrugA, DrugD, -0.06, 0.16",
+      "TRIAL10, Placebo, DrugD, -0.28, 0.13"
+    ].join("\n");
+
+    const warnEl = document.getElementById("warn-banner");
+    const svgHost = document.getElementById("svg-host");
+    const statsWrap = document.getElementById("stats-wrap");
+    const sucraHost = document.getElementById("sucra-host");
+    const leagueHost = document.getElementById("league-host");
+    const hetHost = document.getElementById("het-host");
+    const refHost = document.getElementById("ref-host");
+
+    function readState() { const o={}; for (const [k,id] of Object.entries(fields)) { const el=document.getElementById(id); if (el) o[k]=el.value; } return o; }
+    function writeState(s) { for (const [k,id] of Object.entries(fields)) { const el=document.getElementById(id); if (el && k in s) el.value = s[k]; } }
+
+    function parseContrasts(text) {
+      const rows=[], warnings=[];
+      const lines = String(text||"").split(/\r?\n/);
+      for (let i=0;i<lines.length;i++) {
+        const raw = lines[i].trim();
+        if (!raw || raw.startsWith("#")) continue;
+        const parts = raw.split(/\s*[,\t]\s*/);
+        if (parts.length < 5) { warnings.push("Line "+(i+1)+": need 5 columns"); continue; }
+        const study = parts[0];
+        const t1 = parts[1];
+        const t2 = parts[2];
+        const est = parseFloat(parts[3]);
+        const se = parseFloat(parts[4]);
+        if (!isFinite(est) || !isFinite(se)) {
+          if (rows.length === 0 && i < 3) continue;
+          warnings.push("Line "+(i+1)+": non-numeric"); continue;
+        }
+        if (se <= 0) { warnings.push("Line "+(i+1)+": SE≤0"); continue; }
+        if (t1 === t2) { warnings.push("Line "+(i+1)+": self-loop ignored"); continue; }
+        rows.push({ study, t1, t2, est, se, v: se*se });
+      }
+      return { rows, warnings };
+    }
+
+    function uniqueTreatments(rows) {
+      const set = new Set();
+      for (const r of rows) { set.add(r.t1); set.add(r.t2); }
+      return Array.from(set).sort();
+    }
+
+    // BFS connectivity on undirected graph
+    function isConnected(treatments, rows) {
+      if (!treatments.length) return true;
+      const adj = {};
+      for (const t of treatments) adj[t] = new Set();
+      for (const r of rows) { adj[r.t1].add(r.t2); adj[r.t2].add(r.t1); }
+      const seen = new Set([treatments[0]]);
+      const q = [treatments[0]];
+      while (q.length) { const n = q.shift(); for (const m of adj[n]) if (!seen.has(m)) { seen.add(m); q.push(m); } }
+      return seen.size === treatments.length;
+    }
+
+    // ---- Matrix utilities (small, for up to ~20 treatments) ----
+    function zeros(r, c) { const M = new Array(r); for (let i=0;i<r;i++) { M[i]=new Array(c).fill(0); } return M; }
+    function matmul(A, B) {
+      const m=A.length, n=A[0].length, p=B[0].length;
+      const C = zeros(m, p);
+      for (let i=0;i<m;i++) for (let j=0;j<p;j++) { let s=0; for (let k=0;k<n;k++) s += A[i][k]*B[k][j]; C[i][j] = s; }
+      return C;
+    }
+    function transpose(A) { const m=A.length, n=A[0].length; const B=zeros(n,m); for (let i=0;i<m;i++) for (let j=0;j<n;j++) B[j][i]=A[i][j]; return B; }
+    function invert(A) {
+      const n = A.length;
+      const M = zeros(n, 2*n);
+      for (let i=0;i<n;i++) { for (let j=0;j<n;j++) M[i][j] = A[i][j]; M[i][n+i] = 1; }
+      for (let i=0;i<n;i++) {
+        let pivot = M[i][i];
+        let piv_row = i;
+        for (let r=i+1;r<n;r++) if (Math.abs(M[r][i]) > Math.abs(pivot)) { pivot = M[r][i]; piv_row = r; }
+        if (Math.abs(pivot) < 1e-12) return null;
+        if (piv_row !== i) { const tmp=M[i]; M[i]=M[piv_row]; M[piv_row]=tmp; }
+        const inv = 1/M[i][i];
+        for (let j=0;j<2*n;j++) M[i][j] *= inv;
+        for (let r=0;r<n;r++) if (r!==i) { const f = M[r][i]; if (f !== 0) for (let j=0;j<2*n;j++) M[r][j] -= f * M[i][j]; }
+      }
+      const Inv = zeros(n, n);
+      for (let i=0;i<n;i++) for (let j=0;j<n;j++) Inv[i][j] = M[i][n+j];
+      return Inv;
+    }
+    function cholesky(A) {
+      const n = A.length;
+      const L = zeros(n, n);
+      for (let i=0;i<n;i++) {
+        for (let j=0;j<=i;j++) {
+          let s = 0;
+          for (let k=0;k<j;k++) s += L[i][k]*L[j][k];
+          if (i === j) {
+            const val = A[i][i] - s;
+            if (val <= 0) return null;
+            L[i][j] = Math.sqrt(val);
+          } else {
+            L[i][j] = (A[i][j] - s) / L[j][j];
+          }
+        }
+      }
+      return L;
+    }
+
+    // Box-Muller
+    // Seeded PRNG source so SUCRA rankings are reproducible. Previously rnorm used
+    // Math.random() directly, so identical data gave slightly different SUCRA each
+    // run (a determinism defect for a ranking tool). mcSucra swaps in a fixed seed.
+    function mulberry32(a){return function(){a|=0;a=(a+0x6D2B79F5)|0;let t=Math.imul(a^(a>>>15),1|a);t=(t+Math.imul(t^(t>>>7),61|t))^t;return((t^(t>>>14))>>>0)/4294967296;};}
+    let _rngUnif = Math.random;
+    let normState = null;
+    function rnorm() {
+      if (normState !== null) { const z = normState; normState = null; return z; }
+      let u=0, v=0;
+      while (u === 0) u = _rngUnif();
+      while (v === 0) v = _rngUnif();
+      const R = Math.sqrt(-2*Math.log(u));
+      const theta = 2*Math.PI*v;
+      normState = R*Math.sin(theta);
+      return R*Math.cos(theta);
+    }
+
+    // ---- Contrast-based NMA — delegates to the validated GLS engine ----
+    // shared/nma-multiarm-v1.js applies the multi-arm / shared-control
+    // correction (within-study covariance, +τ²/2 for RE) and matches
+    // netmeta() to 1e-6. Multi-arm studies are detected automatically by
+    // grouping contrasts on `study` (a study with >2 treatments is multi-arm);
+    // see parseContrasts. The simple per-contrast WLS that lived here treated
+    // those contrasts as independent — a unit-of-analysis error (Handbook
+    // §23.3.4). Returns the same shape the rest of this file expects
+    // ({K, nonref, refTreat, d, cov, tau2}) plus {warnings, multiArmStudies}.
+    function fitNMA(rows, treatments, refTreat, model) {
+      if (!window.AlmNmaMultiarm) return { error: "NMA engine not loaded." };
+      const fit = window.AlmNmaMultiarm.fit(rows, { ref: refTreat, model: model === "re" ? "re" : "fe" });
+      if (!fit.ok) return { error: fit.error || "Design matrix is singular (disconnected network or insufficient contrasts)." };
+      return {
+        K: fit.nonref.length, nonref: fit.nonref, refTreat: fit.refTreat,
+        d: fit.d, cov: fit.cov, tau2: fit.tau2,
+        Q: fit.Q, df: fit.df,
+        warnings: fit.warnings || [], multiArmStudies: fit.multiArmStudies || [],
+      };
+    }
+
+
+    // Effect of treatA versus treatB (A minus B), with its 95% CI, from analyse(): the league-table cell (row A, column B).
+    function relEffect(a, model, treatA, treatB) {
+      const i = a.treatments.indexOf(treatA), j = a.treatments.indexOf(treatB), L = model === "re" ? a.random : a.common;
+      return { est: L.TE[i][j], se: L.seTE[i][j], lo: L.lower[i][j], hi: L.upper[i][j], p: L.pval[i][j],
+        piLo: model === "re" && a.predict ? a.predict.lower[i][j] : null, piHi: model === "re" && a.predict ? a.predict.upper[i][j] : null };
+    }
+    function analyseState(rows, state) {
+      return window.AlmNmaMultiarm.analyse(rows, { randomCi: state.ci || "classic", smallValues: state.dir || "desirable" });
+    }
+
+    // MC SUCRA: sample d from MVN(estimate, cov), rank each sample, aggregate
+    function mcSucra(fit, treatments, nSamples, smallerIsBetter) {
+      if (!nSamples) nSamples = 10000;
+      const T = treatments.length;
+      const idx = {}; for (let k=0;k<fit.K;k++) idx[fit.nonref[k]] = k;
+      const L = cholesky(fit.cov);
+      if (!L) return null;
+      const _prevRng = _rngUnif; _rngUnif = mulberry32(20240524); normState = null; // fixed seed -> reproducible SUCRA
+
+      const rankSum = new Array(T).fill(0);
+      const bestCount = new Array(T).fill(0);
+      for (let s=0; s<nSamples; s++) {
+        // sample z
+        const z = new Array(fit.K);
+        for (let i=0;i<fit.K;i++) z[i] = rnorm();
+        // d_sample = μ + L*z
+        const dSample = new Array(fit.K);
+        for (let i=0;i<fit.K;i++) {
+          let v = fit.d[i];
+          for (let j=0;j<=i;j++) v += L[i][j] * z[j];
+          dSample[i] = v;
+        }
+        // Build treatment effect array (ref = 0)
+        const effs = treatments.map(t => t === fit.refTreat ? 0 : dSample[idx[t]]);
+        // Rank: by default a smaller effect is better (netmeta small.values = "desirable")
+        const ordered = effs.map((v,i)=>({v,i})).sort((a,b)=> smallerIsBetter === false ? b.v-a.v : a.v-b.v);
+        for (let r=0;r<T;r++) rankSum[ordered[r].i] += (r+1);
+        bestCount[ordered[0].i] += 1;
+      }
+      _rngUnif = _prevRng; normState = null; // restore default RNG after seeded sampling
+      // SUCRA_t = (T - mean_rank_t) / (T - 1)
+      const sucra = rankSum.map(rs => (T - rs/nSamples) / Math.max(1, T-1));
+      const pBest = bestCount.map(c => c / nSamples);
+      return { sucra, pBest, nSamples };
+    }
+
+    function escapeXml(s) { return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&apos;"); }
+    function fmt(x,d) { if (!isFinite(x)) return "--"; return x.toFixed(d==null?2:d); }
+
+    function buildNetworkSvg(state, treatments, rows, fit) {
+      const W=720, H=540, cx=W/2, cy=H/2, r=Math.min(W,H)*0.36;
+      const T = treatments.length;
+      const pos = treatments.map((t, i) => {
+        const theta = -Math.PI/2 + 2*Math.PI * i / T;
+        return { x: cx + r*Math.cos(theta), y: cy + r*Math.sin(theta), name: t };
+      });
+      // Count studies per edge
+      const edges = {};
+      for (const row of rows) {
+        const k = row.t1 < row.t2 ? row.t1+"|"+row.t2 : row.t2+"|"+row.t1;
+        edges[k] = (edges[k] || 0) + 1;
+      }
+      const maxEdge = Math.max(1, ...Object.values(edges));
+
+      const p = [];
+      p.push("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+      p.push("<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 "+W+" "+H+"\" width=\""+W+"\" height=\""+H+"\" font-family=\"system-ui, sans-serif\">");
+      p.push("<rect x=\"0\" y=\"0\" width=\""+W+"\" height=\""+H+"\" fill=\"#fff\"/>");
+      if (state.title) p.push("<text x=\""+(W/2)+"\" y=\"28\" text-anchor=\"middle\" font-size=\"15\" font-weight=\"700\" fill=\"#15181d\">"+escapeXml(state.title)+"</text>");
+
+      // Edges first (behind nodes)
+      for (const [k, n] of Object.entries(edges)) {
+        const [a, b] = k.split("|");
+        const pa = pos[treatments.indexOf(a)];
+        const pb = pos[treatments.indexOf(b)];
+        const w = 1 + 4 * (n/maxEdge);
+        p.push("<line x1=\""+pa.x+"\" y1=\""+pa.y+"\" x2=\""+pb.x+"\" y2=\""+pb.y+"\" stroke=\"#2c5e8a\" stroke-opacity=\"0.55\" stroke-width=\""+w.toFixed(2)+"\"/>");
+        const mx = pa.x + 0.4*(pb.x-pa.x), my = pa.y + 0.4*(pb.y-pa.y);   // 40% along the edge: labels on crossing edges do not meet at the centre
+        const len = Math.hypot(pb.x - pa.x, pb.y - pa.y) || 1, ox = -(pb.y - pa.y) / len * 11, oy = (pb.x - pa.x) / len * 11;
+        p.push("<text x=\""+(mx+ox)+"\" y=\""+(my+oy+4)+"\" text-anchor=\"middle\" font-size=\"16\" font-weight=\"600\" fill=\"#3d4450\" paint-order=\"stroke\" stroke=\"#fff\" stroke-width=\"3\">"+n+"</text>");
+      }
+      // Nodes
+      for (const node of pos) {
+        const isRef = node.name === state.ref;
+        const fill = isRef ? "#e6a919" : "#2c5e8a";
+        const rad = isRef ? 28 : 24;
+        p.push("<circle cx=\""+node.x+"\" cy=\""+node.y+"\" r=\""+rad+"\" fill=\""+fill+"\" stroke=\"#15181d\" stroke-width=\"1\"/>");
+        p.push("<text x=\""+node.x+"\" y=\""+(node.y+5)+"\" text-anchor=\"middle\" font-size=\"16\" font-weight=\"700\" fill=\"#fff\">"+escapeXml(node.name)+"</text>");
+      }
+
+      // Legend
+      p.push("<text x=\"20\" y=\""+(H-15)+"\" font-size=\"15\" fill=\"#5c6470\">Numbers: studies comparing the two treatments directly · yellow: reference treatment</text>");
+      p.push("</svg>");
+      return p.join("");
+    }
+
+    function statCard(k,v) { return "<div class=\"stat\"><span class=\"k\">"+escapeXml(k)+"</span><span class=\"v\">"+escapeXml(v)+"</span></div>"; }
+
+    function populateRef(treatments, current) {
+      const sel = document.getElementById("f-ref");
+      const prev = current || sel.value;
+      sel.innerHTML = "";
+      for (const t of treatments) {
+        const opt = document.createElement("option");
+        opt.value = t; opt.textContent = t;
+        sel.appendChild(opt);
+      }
+      if (treatments.includes(prev)) sel.value = prev;
+      else if (treatments.length) sel.value = treatments[0];
+    }
+
+    function render() {
+      const state = readState();
+      const parsed = parseContrasts(state.data);
+      const rows = parsed.rows;
+      const treatments = uniqueTreatments(rows);
+
+      populateRef(treatments, _pendingRef || state.ref); _pendingRef = null;
+      const refTreat = document.getElementById("f-ref").value || treatments[0] || "";
+
+      const extras = [...parsed.warnings];
+      let connected = true;
+      if (treatments.length >= 2) connected = isConnected(treatments, rows);
+      if (!connected) extras.push("Network is DISCONNECTED — NMA cannot run. Check that every treatment is linked via at least one path of direct comparisons.");
+
+      const parts = [];
+      parts.push(statCard("Studies", String(new Set(rows.map(r=>r.study)).size)));
+      parts.push(statCard("Contrasts", String(rows.length)));
+      parts.push(statCard("Treatments", String(treatments.length)));
+      parts.push(statCard("Reference", refTreat));
+
+      if (rows.length && treatments.length >= 2 && connected) {
+        const a = analyseState(rows, state);
+        _lastAnalysis = a.ok ? a : null;
+        if (!a.ok) {
+          extras.push(a.error);
+          sucraHost.innerHTML = ""; leagueHost.innerHTML = ""; hetHost.innerHTML = ""; refHost.innerHTML = "";
+        } else {
+          const model = state.model === "re" ? "re" : "fe", ex = state.scale === "exp";
+          const tv = (v) => (v === null || !isFinite(v)) ? "--" : fmt(ex ? Math.exp(v) : v, ex ? 2 : 3);
+          const pv = (p) => p === null || !isFinite(p) ? "--" : (p < 0.0001 ? "< 0.0001" : fmt(p, 4));
+          if (model === "re") parts.push(statCard("τ²", a.tau2 === null ? "--" : fmt(a.tau2, 4)));
+          parts.push(statCard("I²", a.I2 === null ? "--" : fmt(100 * a.I2, 1) + "%"));
+          if (a.multiArmStudies && a.multiArmStudies.length) {
+            extras.push("Multi-arm correction applied to " + a.multiArmStudies.length + " stud" + (a.multiArmStudies.length === 1 ? "y" : "ies") + " (" + a.multiArmStudies.join(", ") + "): correlated contrasts, as netmeta.");
+          }
+          if (a.df === 0) extras.push("No degrees of freedom for heterogeneity (every comparison has a single study and the network has no loops): τ², I² and prediction intervals cannot be estimated.");
+          else if (model === "re" && !a.predict) extras.push("Prediction intervals need at least 2 degrees of freedom for heterogeneity.");
+          // heterogeneity and inconsistency
+          const h = ["<table class=\"het\"><tbody>"];
+          h.push("<tr><th scope=\"row\">τ² (DerSimonian–Laird), τ</th><td>" + (a.tau2 === null ? "not estimable" : fmt(a.tau2, 4) + ", " + fmt(a.tau, 4)) + "</td></tr>");
+          h.push("<tr><th scope=\"row\">I² (95% CI)</th><td>" + (a.I2 === null ? "not estimable" : fmt(100 * a.I2, 1) + "% (" + fmt(100 * a.lowerI2, 1) + "% to " + fmt(100 * a.upperI2, 1) + "%)") + "</td></tr>");
+          const qrow = (lab, q, d, p) => "<tr><th scope=\"row\">" + lab + "</th><td>Q = " + fmt(q, 2) + ", df = " + d + ", p " + (p === null ? "--" : (p < 0.0001 ? "< 0.0001" : "= " + fmt(p, 4))) + "</td></tr>";
+          h.push(qrow("Total", a.Q, a.df, a.pvalQ));
+          if (a.decomp) { h.push(qrow("Within designs (heterogeneity)", a.decomp.Q[1], a.decomp.df[1], a.decomp.pval[1])); h.push(qrow("Between designs (inconsistency)", a.decomp.Q[2], a.decomp.df[2], a.decomp.pval[2])); }
+          h.push("</tbody></table>");
+          hetHost.innerHTML = h.join("");
+          // estimates versus the reference
+          const r = ["<table class=\"het\"><thead><tr><th scope=\"col\">Treatment</th><th scope=\"col\">vs " + escapeXml(refTreat) + " (95% CI)</th>" + (model === "re" ? "<th scope=\"col\">95% prediction interval</th>" : "") + "<th scope=\"col\">p</th></tr></thead><tbody>"];
+          for (const t of treatments) {
+            if (t === refTreat) continue;
+            const e = relEffect(a, model, t, refTreat);
+            r.push("<tr><td>" + escapeXml(t) + "</td><td>" + tv(e.est) + " (" + tv(e.lo) + " to " + tv(e.hi) + ")</td>" + (model === "re" ? "<td>" + (e.piLo === null ? "--" : tv(e.piLo) + " to " + tv(e.piHi)) + "</td>" : "") + "<td>" + pv(e.p) + "</td></tr>");
+          }
+          r.push("</tbody></table>");
+          refHost.innerHTML = r.join("");
+          // P-scores (netmeta netrank) and the simulated probability of being best (fixed seed)
+          const ps = model === "re" ? a.pscore.random : a.pscore.common, smaller = (state.dir || "desirable") === "desirable";
+          const fit = fitNMA(rows, treatments, refTreat, model), mc = fit.error ? null : mcSucra(fit, treatments, 10000, smaller);
+          const ranked = treatments.map((t, i) => ({ t, ps: ps[a.treatments.indexOf(t)], pb: mc ? mc.pBest[i] : null })).sort((x, y) => y.ps - x.ps);
+          sucraHost.innerHTML = "<div class=\"sucra-row\" style=\"font-size:0.72rem;color:var(--muted)\"><div>Treatment</div><div></div><div class=\"sucra-val\">P-score</div><div class=\"sucra-val\">P(best)</div></div>" +
+            ranked.map(p => "<div class=\"sucra-row\"><div>" + escapeXml(p.t) + "</div><div class=\"sucra-bar\"><span style=\"width:" + (p.ps * 100).toFixed(1) + "%\"></span></div><div class=\"sucra-val\">" + (p.ps * 100).toFixed(1) + "%</div><div class=\"sucra-val\">" + (p.pb === null ? "--" : (p.pb * 100).toFixed(1) + "%") + "</div></div>").join("") +
+            "<p style=\"color:var(--muted);font-size:0.75rem;margin-top:0.5rem\">P-score (netmeta <code>netrank</code>): the mean certainty that a treatment is better than each of the others, with " + (smaller ? "smaller" : "larger") + " estimates better. P(best): probability of ranking first in 10,000 draws from the estimates (fixed seed). Neither is an effect size — read them with the estimates and their intervals.</p>";
+          // league table: row versus column
+          const tbl = ["<table class=\"league\"><thead><tr><th></th>"];
+          for (const t of treatments) tbl.push("<th>" + escapeXml(t) + "</th>");
+          tbl.push("</tr></thead><tbody>");
+          for (const row of treatments) {
+            tbl.push("<tr><th>" + escapeXml(row) + "</th>");
+            for (const col of treatments) {
+              if (row === col) { tbl.push("<td class=\"diag\">—</td>"); continue; }
+              const e = relEffect(a, model, row, col);
+              const cls = e.est > 0 ? "pos" : (e.est < 0 ? "neg" : "");
+              tbl.push("<td class=\"" + cls + "\">" + tv(e.est) + "<br><span style=\"color:var(--muted);font-size:0.72rem\">[" + tv(e.lo) + ", " + tv(e.hi) + "]</span></td>");
+            }
+            tbl.push("</tr>");
+          }
+          tbl.push("</tbody></table>");
+          leagueHost.innerHTML = tbl.join("");
+        }
+      } else {
+        _lastAnalysis = null;
+        sucraHost.innerHTML = "<p style=\"color:var(--muted);font-size:0.85rem\">Need ≥2 treatments in a connected network to fit NMA.</p>";
+        leagueHost.innerHTML = ""; hetHost.innerHTML = ""; refHost.innerHTML = "";
+      }
+
+      statsWrap.innerHTML = "<div class=\"stats\">"+parts.join("")+"</div>";
+
+      if (!extras.length) { warnEl.classList.remove("is-visible"); warnEl.innerHTML = ""; }
+      else { warnEl.innerHTML = "<strong>Notes</strong><ul>"+extras.map(w=>"<li>"+escapeXml(w)+"</li>").join("")+"</ul>"; warnEl.classList.add("is-visible"); }
+
+      // Network graph
+      const svg = (rows.length && treatments.length >= 2)
+        ? buildNetworkSvg(Object.assign({}, state, { ref: refTreat }), treatments, rows, null)
+        : "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 120\" width=\"400\" height=\"120\"><rect width=\"400\" height=\"120\" fill=\"#fff\"/><text x=\"200\" y=\"60\" text-anchor=\"middle\" font-family=\"system-ui\" font-size=\"13\" fill=\"#5c6470\">Paste contrasts to render network.</text></svg>";
+      svgHost.innerHTML = svg;
+
+      try { localStorage.setItem(LS_KEY, JSON.stringify(state)); } catch(e) {}
+    }
+
+    function loadSaved() {
+      try { const raw = localStorage.getItem(LS_KEY); if (!raw) return false;
+        const p = JSON.parse(raw); if (p && typeof p === "object") { writeState(p); return true; }
+      } catch(e) {}
+      return false;
+    }
+    function downloadBlob(blob, fn) {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a"); a.href = url; a.download = fn;
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+    }
+    function slugify(t,f) { const s=String(t||"").trim().toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,""); return s||f; }
+
+    function onDownloadSvg() {
+      const state = readState();
+      const parsed = parseContrasts(state.data);
+      const treatments = uniqueTreatments(parsed.rows);
+      if (!parsed.rows.length || treatments.length < 2) return alert("Need ≥2 treatments.");
+      const svg = buildNetworkSvg(Object.assign({}, state, { ref: document.getElementById("f-ref").value || treatments[0] }), treatments, parsed.rows, null);
+      downloadBlob(new Blob([svg], {type:"image/svg+xml;charset=utf-8"}), "nma-"+slugify(state.title,"network")+".svg");
+    }
+    function csvCell(v){ var s=String(v==null?"":v); if(/^[=+@\t\r]/.test(s)) s="'"+s; if(/[",\n\r]/.test(s)) s='"'+s.replace(/"/g,'""')+'"'; return s; }
+    function onDownloadLeague() {
+      const state = readState();
+      const parsed = parseContrasts(state.data);
+      const treatments = uniqueTreatments(parsed.rows);
+      if (!parsed.rows.length || treatments.length < 2) return alert("Need ≥2 treatments.");
+      if (!isConnected(treatments, parsed.rows)) return alert("Network disconnected.");
+      const a = analyseState(parsed.rows, state);
+      if (!a.ok) return alert(a.error);
+      const model = state.model === "re" ? "re" : "fe", ex = state.scale === "exp", tv = (v) => fmt(ex ? Math.exp(v) : v, 4);
+      const header = ["row vs column"].concat(treatments).map(csvCell).join(",");
+      const lines = [header];
+      for (const row of treatments) {
+        const cells = [row];
+        for (const col of treatments) {
+          if (row === col) cells.push("-");
+          else { const e = relEffect(a, model, row, col); cells.push(tv(e.est)+" ["+tv(e.lo)+", "+tv(e.hi)+"]"); }
+        }
+        lines.push(cells.map(csvCell).join(","));
+      }
+      downloadBlob(new Blob([lines.join("\n")], {type:"text/csv;charset=utf-8"}), "nma-league.csv");
+    }
+    function onDownloadJson() {
+      const state = readState();
+      const out = Object.assign({_schema:"nma-v1", _savedAt:new Date().toISOString()}, state);
+      downloadBlob(new Blob([JSON.stringify(out,null,2)],{type:"application/json"}), "nma-state.json");
+    }
+    function onImportJson(file) {
+      const r = new FileReader();
+      r.onload = function () {
+        try { const p = JSON.parse(r.result); if (p && typeof p === "object") { writeState(p); render(); } }
+        catch(e) { alert("Could not parse JSON: "+e.message); }
+      };
+      r.readAsText(file);
+    }
+    function onReset() {
+      if (!confirm("Clear inputs?")) return;
+      document.getElementById("f-data").value = "";
+      document.getElementById("f-model").value = "fe";
+      document.getElementById("f-title").value = "";
+      _pendingRef = null;
+      render();
+    }
+    function onExample() {
+      const key = document.getElementById("f-example").value, ex = key !== "generic" && window.NMA_EXAMPLES && window.NMA_EXAMPLES[key];
+      if (!ex) {
+        document.getElementById("f-data").value = EXAMPLE;
+        document.getElementById("f-title").value = "Example NMA — 4 drugs vs placebo";
+      } else {
+        const scale = ex.measure === "MD" ? "mean difference" : "log " + ex.measure;
+        document.getElementById("f-data").value = "# " + key + " (netmeta): study, treatment1, treatment2, estimate (treatment2 − treatment1, " + scale + "), SE\n" + ex.data;
+        document.getElementById("f-title").value = key + ": " + ex.title;
+        document.getElementById("f-scale").value = ex.measure === "MD" ? "log" : "exp";
+        document.getElementById("f-model").value = "re";
+        if (ex.better) document.getElementById("f-dir").value = ex.better === "larger" ? "undesirable" : "desirable";
+        const trs = uniqueTreatments(parseContrasts(ex.data).rows);
+        _pendingRef = trs.find((t) => /^plac/i.test(t)) || null;
+      }
+      render();
+    }
+
+    // ---- Read the arm-level ma-comparisons-v1 bus written by Extract -------
+    // toContrasts() emits {study, treatment1, treatment2, te, se, design}. We
+    // serialise to this app's CSV (study, t1, t2, est, se). Multi-arm trials
+    // appear as several rows sharing one `study` id — that grouping is exactly
+    // what fitNMA/AlmNmaMultiarm uses to apply the shared-control correction.
+    function busContrastsText() {
+      if (!window.MaComparisons) return null;
+      const env = window.MaComparisons.read();
+      if (!env || !Array.isArray(env.studies) || !env.studies.length) return null;
+      const rows = window.MaComparisons.toContrasts(env);
+      if (!rows || !rows.length) return null;
+      // est convention here is treatment2 − treatment1; toContrasts te is
+      // (treatment1 − treatment2), so swap the labels to keep est = t2 − t1.
+      const lines = ["# study, treatment1, treatment2, est, SE  (from extraction bus, " + (env.effectMeasure || "?") + " log-scale)"];
+      for (const r of rows) {
+        lines.push([r.study, r.treatment2, r.treatment1, r.te.toFixed(6), r.se.toFixed(6)].join(", "));
+      }
+      return { text: lines.join("\n"), measure: env.effectMeasure, n: rows.length };
+    }
+    function onLoadBus() {
+      const bus = busContrastsText();
+      if (!bus) { alert("No arm-level contrasts on the extraction bus yet. In Extract, send records with per-arm event/sample data to the comparisons bus first."); return; }
+      document.getElementById("f-data").value = bus.text;
+      if (!document.getElementById("f-title").value) document.getElementById("f-title").value = "NMA from extraction (" + bus.measure + ")";
+      render();
+    }
+
+    function attach() {
+      for (const id of Object.values(fields)) { const el = document.getElementById(id); if (el) { el.addEventListener("input", render); if (el.tagName === "SELECT") el.addEventListener("change", render); } }
+      document.getElementById("f-ref").addEventListener("change", render);
+      document.getElementById("btn-svg").addEventListener("click", onDownloadSvg);
+      document.getElementById("btn-league").addEventListener("click", onDownloadLeague);
+      document.getElementById("btn-json").addEventListener("click", onDownloadJson);
+      document.getElementById("btn-reset").addEventListener("click", onReset);
+      document.getElementById("btn-example").addEventListener("click", onExample);
+      document.getElementById("btn-bus").addEventListener("click", onLoadBus);
+      document.getElementById("btn-import").addEventListener("click", function(){ document.getElementById("file-import").click(); });
+      document.getElementById("file-import").addEventListener("change", function(e){
+        const f = e.target.files && e.target.files[0]; if (f) onImportJson(f); e.target.value = "";
+      });
+    }
+
+    // Pure-compute hook for R-parity tests: the netmeta-equivalent analysis (deterministic). Effects are
+    // versus refTreat (treatment minus reference); P-scores for both directions of benefit.
+    window.__almNmaCompute = function (text, refTreat, opts) {
+      const { rows } = parseContrasts(text);
+      const o = opts || {};
+      const a = window.AlmNmaMultiarm.analyse(rows, { randomCi: o.randomCi || "classic" });
+      if (!a.ok) return { error: a.error };
+      const b = window.AlmNmaMultiarm.analyse(rows, { randomCi: o.randomCi || "classic", smallValues: "undesirable" });
+      const ref = refTreat || a.treatments[0], r = a.treatments.indexOf(ref);
+      const pack = (L, tau2) => ({ tau2, est: Object.fromEntries(a.treatments.map((t, i) => [t, { d: L.TE[i][r], se: L.seTE[i][r] }])) });
+      const named = (v) => Object.fromEntries(a.treatments.map((t, i) => [t, v[i]]));
+      return { treatments: a.treatments, ref, fe: pack(a.common, 0), re: pack(a.random, a.tau2 === null ? 0 : a.tau2),
+        pscore: { desirable: { fe: named(a.pscore.common), re: named(a.pscore.random) }, undesirable: { fe: named(b.pscore.common), re: named(b.pscore.random) } },
+        analysis: a };
+    };
+
+    const loaded = loadSaved();
+    if (!loaded) {
+      // Prefer real arm-level data from the extraction bus over the demo.
+      const bus = busContrastsText();
+      if (bus) {
+        document.getElementById("f-data").value = bus.text;
+        document.getElementById("f-title").value = "NMA from extraction (" + bus.measure + ")";
+      } else {
+        document.getElementById("f-data").value = EXAMPLE;
+        document.getElementById("f-title").value = "Example NMA — 4 drugs vs placebo";
+      }
+    }
+    attach();
+    render();
+  })();
+  </script>
+<script src="../hub/shared/a11y-landmarks.js"></script>
+
+<script>
+(function () {
+  function ready(fn) {
+    if (document.readyState !== "loading") fn();
+    else document.addEventListener("DOMContentLoaded", fn);
+  }
+  ready(function () {
+    if (window.AlmFlow && typeof AlmFlow.attachContinueBar === "function") {
+      AlmFlow.attachContinueBar({
+        container: "#alm-flow-mount",
+        suggestions: ["nma-pro-v2", "nma-inconsistency", "bucher", "nma-meta-reg"],
+      });
+    }
+  });
+})();
+</script>
+</body>
+</html>

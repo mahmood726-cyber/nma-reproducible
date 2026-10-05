@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+title: "nma-reproducible: the allmeta NMA app (frequentist network meta-analysis), validated against R netmeta"
+message: "If you use this software or validation, please cite it using the metadata below, and cite netmeta and the original dataset authors."
+type: software
+authors:
+  - family-names: Ahmad
+    given-names: Mahmood
+repository-code: "https://github.com/mahmood726-cyber/nma-reproducible"
+license: MIT
+version: 1.0.0
+keywords:
+  - network meta-analysis
+  - multi-arm trials
+  - netmeta
+  - software validation
+  - reproducibility
+references:
+  - type: software
+    title: "allmeta — open browser-only tools for evidence synthesis"
+    version: v1.1.1
+    authors:
+      - family-names: Ahmad
+        given-names: Mahmood
+    doi: 10.5281/zenodo.20584424
