@@ -1,7 +1,7 @@
 """Compare full runs from different machines.
 
 STRICT (must be bit-identical, compared with ==):
-  corpus.csv (the input) and engine.jsonl (every number produced by the app's JavaScript engine).
+  corpus.csv (the input; every cell, numbers as binary64 bit patterns) and engine.jsonl (every number produced by the app's JavaScript engine).
 REPORTED (not required to be identical):
   netmeta.jsonl, the R reference values. R uses the operating system's maths library and BLAS,
   so its last bits differ between Linux, Windows and macOS; the largest relative difference is
@@ -12,6 +12,7 @@ bit-identical: V8 on arm64 can differ from x86-64 in the last bit of floating-po
 app's iterative optimisers (BFGS, Nelder-Mead) can amplify such differences.
   python analysis/compare_runs.py canonical strict1 strict2 --report-only arm_run
 """
+import csv
 import json
 import sys
 from pathlib import Path
@@ -32,7 +33,12 @@ def flat(o, p=""):
 def load(run, f):
     run = Path(run)
     if f == "corpus.csv":
-        return {"corpus.csv": (run / f).read_bytes().replace(b"\r\n", b"\n")}
+        # Compared cell by cell, numbers as binary64 bit patterns: R's 17-digit decimal spelling of the
+        # same double differs between platforms (Windows writes -0.099999999999999978 where Linux writes
+        # -0.09999999999999998; both are -0x1.9999999999998p-4).
+        rows = list(csv.reader((run / f).read_text(encoding="utf-8").splitlines()))
+        return {f"corpus.csv:{i}:{h}": (float(v).hex() if h in ("TE", "seTE") else v)
+                for i, r in enumerate(rows[1:], 1) for h, v in zip(rows[0], r)}
     vals = {}
     for line in (run / f).read_text(encoding="utf-8").splitlines():
         if line.strip():
