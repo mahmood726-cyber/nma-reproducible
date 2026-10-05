@@ -1,22 +1,22 @@
 {
  "mode": "full",
  "all_ok": false,
- "when": "2026-10-05 16:06 UTC",
- "sha": "7f3fff0c5ba6e4c812c2e039a0d72dc80471eee1",
- "run_id": "37337254878",
- "run_url": "https://github.com/mahmood726-cyber/nma-reproducible/actions/runs/37337254878",
+ "when": "2026-10-05 16:17 UTC",
+ "sha": "bb97912928b4965e6383dd56308efff550da1ddc",
+ "run_id": "37338630118",
+ "run_url": "https://github.com/mahmood726-cyber/nma-reproducible/actions/runs/37338630118",
  "platforms": [
   {
    "platform": "Docker (canonical)",
    "artifact": "full-docker",
-   "ok": null,
-   "summary": "no report (run did not finish)"
+   "ok": true,
+   "summary": "48/48 numbers reproduced"
   },
   {
    "platform": "Linux",
    "artifact": "full-ubuntu-latest",
-   "ok": null,
-   "summary": "no report (run did not finish)"
+   "ok": true,
+   "summary": "48/48 numbers reproduced"
   },
   {
    "platform": "Windows",
