@@ -1,10 +1,10 @@
 {
  "mode": "full",
  "all_ok": false,
- "when": "2026-10-05 16:17 UTC",
- "sha": "bb97912928b4965e6383dd56308efff550da1ddc",
- "run_id": "37338630118",
- "run_url": "https://github.com/mahmood726-cyber/nma-reproducible/actions/runs/37338630118",
+ "when": "2026-10-05 16:21 UTC",
+ "sha": "03ded3166bd5babd992fb9e14a957672a7410f0e",
+ "run_id": "37339317691",
+ "run_url": "https://github.com/mahmood726-cyber/nma-reproducible/actions/runs/37339317691",
  "platforms": [
   {
    "platform": "Docker (canonical)",
@@ -27,8 +27,8 @@
   {
    "platform": "macOS",
    "artifact": "full-macos-latest",
-   "ok": null,
-   "summary": "no report (run did not finish)"
+   "ok": true,
+   "summary": "48/48 numbers reproduced"
   }
  ],
  "compare": "failure",
