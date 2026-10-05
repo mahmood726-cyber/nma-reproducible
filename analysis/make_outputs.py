@@ -20,7 +20,7 @@ LABEL = {"Baker2009": "COPD, exacerbations", "Dogliotti2014": "Atrial fibrillati
          "Stowe2010": "Parkinson's disease, off-time", "Woods2010": "Survival counts", "dietaryfat": "Dietary fat, mortality",
          "parkinson": "Parkinson's disease (= Franchini2012)", "smokingcessation": "Smoking cessation"}
 TOL = {"TE_common": 1e-9, "seTE_common": 1e-9, "CI_common": 1e-9, "p_common": 1e-9, "TE_random": 1e-9, "seTE_random": 1e-9,
-       "CI_random": 1e-9, "p_random": 1e-9, "Q": 1e-9, "df": 0, "pvalQ": 1e-9, "tau2": 1e-9, "I2": 1e-9, "predict": 1e-9,
+       "CI_random": 1e-9, "p_random": 1e-9, "Q": 1e-9, "df": 1e-9, "pvalQ": 1e-9, "tau2": 1e-9, "I2": 1e-9, "predict": 1e-9,
        "pscore": 1e-9, "decomp": 1e-9}
 GROUP = {"TE_common": "estimates", "seTE_common": "estimates", "CI_common": "estimates", "TE_random": "estimates",
          "seTE_random": "estimates", "CI_random": "estimates", "predict": "estimates", "p_common": "p-values", "p_random": "p-values",
@@ -79,7 +79,7 @@ def compare(app_in, ref):
          "TE_random": R(app["random"]["TE"], ref["TE_random"], allix), "seTE_random": R(app["random"]["seTE"], ref["seTE_random"], allix),
          "CI_random": max(R(app["random"]["lower"], ref["lower_random"], off), R(app["random"]["upper"], ref["upper_random"], off)),
          "p_random": A(app["random"]["pval"], ref["pval_random"], off),
-         "Q": nul(app["Q"], ref["Q"], rel), "df": 0.0 if app["df"] == ref["df_Q"] else math.inf,
+         "Q": nul(app["Q"], ref["Q"], rel), "df": abs(app["df"] - ref["df_Q"]),   # netmeta computes df.Q = 2*sum(1/narms) - (n - 1) in floating point
          "pvalQ": nul(app["pvalQ"], ref["pval_Q"], lambda a, b: abs(a - b)), "tau2": nul(app["tau2"], ref["tau2"], rel),
          "I2": max(nul(app["I2"], ref["I2"], lambda a, b: abs(a - b)), nul(app["lowerI2"], ref["lower_I2"], lambda a, b: abs(a - b)),
                    nul(app["upperI2"], ref["upper_I2"], lambda a, b: abs(a - b)))}

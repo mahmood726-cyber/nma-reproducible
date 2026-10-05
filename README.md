@@ -58,7 +58,7 @@ The app is validated at **allmeta commit `6e753c6`** (the merge of [allmeta PR #
 
 Earlier versions of the app had known issues, found by this validation and fixed in allmeta PR #78; see [CHANGELOG.md](CHANGELOG.md).
 
-Tolerances follow allmeta's own parity test (`hub/shared/tests/_nma_parity_check.mjs`, mirrored in `analysis/make_outputs.py`). netmeta's common-effect and DerSimonian–Laird analyses are closed form and the engine evaluates the same formulas, so every quantity must agree within 10⁻⁹: relative (max(1, |value|)) for estimates, SEs, CIs, prediction intervals, Q, τ² and the decomposition of Q; absolute for p-values, I² and its CI, and P-scores. Degrees of freedom and refusals must match exactly. Treatments are matched by name (R and JavaScript sort names differently).
+Tolerances follow allmeta's own parity test (`hub/shared/tests/_nma_parity_check.mjs`, mirrored in `analysis/make_outputs.py`). netmeta's common-effect and DerSimonian–Laird analyses are closed form and the engine evaluates the same formulas, so every quantity must agree within 10⁻⁹: relative (max(1, |value|)) for estimates, SEs, CIs, prediction intervals, Q, τ² and the decomposition of Q; absolute for p-values, I² and its CI, and P-scores. Degrees of freedom must agree within 10⁻⁹ (netmeta computes them in floating point: on ARM they can differ from an integer in the last bit) and refusals must match. Treatments are matched by name (R and JavaScript sort names differently).
 
 netmeta's REML and ML estimators of τ², node-splitting (`netsplit`, in a separate allmeta app) and arm-level input are not part of this comparison.
 
