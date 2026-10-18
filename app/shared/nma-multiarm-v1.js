@@ -277,6 +277,17 @@
   function fit(rows, opts) {
     opts = opts || {};
     if (!Array.isArray(rows) || rows.length === 0) return { ok: false, error: "no contrasts" };
+    // Reject malformed contrasts before computing GLS variances or rankings.
+    // Do not silently drop rows: that would alter the declared evidence network.
+    for (var ni = 0; ni < rows.length; ni++) {
+      var nr = rows[ni];
+      if (!nr || typeof nr.est !== "number" || !Number.isFinite(nr.est) ||
+          typeof nr.se !== "number" || !Number.isFinite(nr.se) ||
+          !(nr.se > 0) || !Number.isFinite(nr.se * nr.se) || !(nr.se * nr.se > 0))
+        return { ok: false, error: "contrast row " + (ni + 1) +
+          ": estimate and standard error require finite numbers and positive finite variance" };
+    }
+
     // Refuse, as netmeta's chkmultiarm() does, rather than fitting a network with a study left out
     // or mis-specified: every study must supply each of its m(m-1)/2 comparisons exactly once, a
     // multi-arm study's estimates must be internally consistent (A-C = (A-B) + (B-C), tolerance 0.001,
