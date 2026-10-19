@@ -2,6 +2,7 @@
 
 [![reproduce](https://github.com/mahmood726-cyber/nma-reproducible/actions/workflows/reproduce.yml/badge.svg)](https://github.com/mahmood726-cyber/nma-reproducible/actions/workflows/reproduce.yml)
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/mahmood726-cyber/nma-reproducible?quickstart=1)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23203451.svg)](https://doi.org/10.5281/zenodo.23203451)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Latest verified run](https://img.shields.io/badge/latest%20verified%20run-results%20page-2c5e8a)](https://mahmood726-cyber.github.io/nma-reproducible/)
 
@@ -109,7 +110,7 @@ Run time: a few minutes, almost all of it netmeta itself.
 
 ## Cite
 
-Ahmad M. Network meta-analysis in the browser: a tool validated against the R package netmeta [software], v1.0.0. Zenodo; 2026. (DOI to be added on release.) Machine-readable metadata: `CITATION.cff`.
+Ahmad M. Network meta-analysis in the browser: a tool validated against the R package netmeta [software], v1.0.0. Zenodo; 2026. doi:[10.5281/zenodo.23203451](https://doi.org/10.5281/zenodo.23203451). Machine-readable metadata: `CITATION.cff`.
 
 ## Licence
 
