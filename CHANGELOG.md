@@ -1,9 +1,28 @@
 # Changelog
 
-## Validated version
+## v1.1.0 - 2026-10-22
+
+- Copy NMA and runtime dependencies from allmeta v1.8.0,
+  commit 1cb3f8409c7af75ed41f7e1811f9c502f900fc79,
+  DOI 10.5281/zenodo.23515177.
+- Include PR #164 malformed-input/partial-network refusal behavior.
+- Preserve the original benchmark scripts, corpus construction, expected values,
+  reference procedure and tolerances. Final release run: 410/410 checks;
+  26/26 analyses agree; 2/2 refusals matched; 48/48 numbers reproduced: ALL PASS.
+  Corpus: 13 datasets, 364 studies, 506 contrasts. UI SMOKE: 5/5 passed;
+  archived R corpus replay 410/410. Numerical extras: N/A.
+- Archive the redacted final release log in provenance/run_plan-2026-10-22-release.log.
+  Disclose the runner's --allow-version-mismatch exception and exact deviations
+  in RECUT_NOTES.md; original dependency pins remain unchanged.
+- No numerical plus suite exists for this app. Add a separate UI smoke runner,
+  portable Windows run plan, source inventory and integrity manifests.
+- Exclude simulated P(best) from the paper's validated claims; retain historical
+  screenshots and generated numbers with their original provenance.
+
+## v1.0.0 validated source (historical)
 
 This repository validates the allmeta NMA app at **allmeta commit `6e753c68644834ce4588c4bdf89366452da3159e`**, the merge of
-[allmeta PR #78](https://github.com/mahmood726-cyber/allmeta/pull/78). `app/` is byte-identical to that commit.
+[allmeta PR #78](https://github.com/mahmood726-cyber/allmeta/pull/78). The v1.0.0 app copy was byte-identical to that commit.
 
 ## Earlier versions of the app (history)
 
@@ -22,4 +41,4 @@ PR #78 also adds netmeta's datasets as examples and a parity test over the full 
 
 ## This repository
 
-- **Unreleased:** validation of allmeta `6e753c6` against netmeta 3.7-0 on all 13 of its datasets with normal and t-based CIs. All 26 analyses agree: 24 within 10⁻⁹ and the same 2 refusals; 410/410 checks pass.
+- **v1.0.0 (historical):** validation of allmeta `6e753c6` against netmeta 3.7-0 on all 13 of its datasets with normal and t-based CIs. All 26 analyses agree: 24 within 10⁻⁹ and the same 2 refusals; 410/410 checks pass.

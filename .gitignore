@@ -7,3 +7,17 @@ docs/screenshots/_full_*.png
 outputs/
 results/
 venv/
+*.prev-*/
+PROGRESS.md
+
+# Keep raw logs and temporary work out of publication.
+*.log
+!provenance/*.log
+tmp*/
+temp/
+temp-*/
+.tmp/
+.temp/
+*.tmp/
+*.temp/
+_recut_test_*/

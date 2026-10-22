@@ -1,8 +1,50 @@
 # nma-reproducible
 
+## What's new in v1.1.0
+
+Release date: **2026-10-22**. **Release run passed.** This archive now contains
+the allmeta **v1.8.0** NMA app and runtime dependencies, copied byte-for-byte
+from release commit **1cb3f8409c7af75ed41f7e1811f9c502f900fc79**
+([release DOI](https://doi.org/10.5281/zenodo.23515177);
+[concept DOI](https://doi.org/10.5281/zenodo.20516880)).
+PR #164 improves malformed-input refusal so a partial network is not analysed.
+The original netmeta 3.7-0 validation and expected values/tolerances are unchanged;
+the release run reproduced **410/410 checks**, **26/26 analyses agree**, and
+**2/2 refusals matched**, as expected. It also reproduced **48/48 paper numbers**
+and passed **5/5 UI smoke groups**, including the archived corpus replay **410/410**.
+The corpus contains **13 datasets, 364 studies, 506 contrasts**.
+
+Evidence: [redacted final release log](provenance/run_plan-2026-10-22-release.log)
+(22 October 2026; runner exit 0). Numerical extras: **N/A**.
+This Windows run used the documented --allow-version-mismatch exception;
+see [RECUT_NOTES.md](RECUT_NOTES.md#finalize-2026-10-22) for the exact environment,
+all version deviations and finalization checks. The original pins are unchanged.
+
+NMA has **no numerical plus suite**. [validation-plus/README.md](validation-plus/README.md)
+documents that scope and a separate browser usability smoke check. The paper
+does not claim validation of simulated P(best). Historical screenshots and
+docs/numbers.json remain v1.0.0 evidence.
+
+For the release rerun on Windows, provision the existing pinned dependencies,
+then run from this repository root:
+
+    call RUN_PLAN.cmd > ..\run_plan.log 2>&1
+
+See [RUN_PLAN_EXPECTED.md](RUN_PLAN_EXPECTED.md) for environment variables and
+expected counts. Earlier full-run folders are preserved as full.prev-N.
+The plan fails on any validation or integrity error. The completed run's
+numerical and browser results are recorded in the linked provenance log.
+
+APP_SOURCE.json identifies the release source and every copied asset.
+The unchanged upstream shared/build-info.js records build commit 42a94da;
+the release-tag commit above is this archive's source identity. The optional
+browser R widget uses netmeta 3.4-0; the original benchmark uses 3.7-0.
+Run python scripts/recut_integrity.py to verify hashes. Use --write only after
+reviewing intentional release-file edits.
+
 [![reproduce](https://github.com/mahmood726-cyber/nma-reproducible/actions/workflows/reproduce.yml/badge.svg)](https://github.com/mahmood726-cyber/nma-reproducible/actions/workflows/reproduce.yml)
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/mahmood726-cyber/nma-reproducible?quickstart=1)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23203451.svg)](https://doi.org/10.5281/zenodo.23203451)
+[![v1.0.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23203451.svg)](https://doi.org/10.5281/zenodo.23203451)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Latest verified run](https://img.shields.io/badge/latest%20verified%20run-results%20page-2c5e8a)](https://mahmood726-cyber.github.io/nma-reproducible/)
 
@@ -47,11 +89,11 @@ Without Docker you need R 4.6.0, Node 24.15.0 and Python 3.12 or 3.13:
 
 `make setup` and `make reproduce` do the same. **To use the app**, open `app/nma/index.html` in a browser.
 
-## What it shows
+## Original v1.0.0 results and v1.1.0 reproduction
 
-The app is validated at **allmeta commit `6e753c6`** (the merge of [allmeta PR #78](https://github.com/mahmood726-cyber/allmeta/pull/78)). `app/` is byte-identical to that commit.
+The following results describe v1.0.0 at allmeta commit 6e753c6 (PR #78). The **2026-10-22 v1.1.0 release run reproduced all 48/48 paper numbers** within the original tolerances; its numerical checks were **410/410**. The current app source is allmeta v1.8.0, recorded above.
 
-| | Result |
+| | Historical result / rerun expectation |
 |---|---|
 | All 13 netmeta datasets (364 studies, 506 contrasts, 52 multi-arm studies; 3–22 treatments) × normal and t-based random-effects CIs = 26 analyses | All 26 agree with netmeta: 24 within 10⁻⁹ and the same 2 refusals (Dong2013: a three-arm study has an undefined comparison). 410/410 checks pass. |
 | Largest differences | Estimates, SEs, CIs and prediction intervals below 10⁻¹²; every reported quantity below 10⁻¹⁰. |
@@ -67,7 +109,11 @@ netmeta's REML and ML estimators of τ², node-splitting (`netsplit`, in a separ
 
 | Path | Contents |
 |---|---|
-| `app/` | The app, byte-identical to allmeta commit `6e753c6` |
+| app/ | Byte-identical selected files from allmeta v1.8.0; see APP_SOURCE.json |
+| validation-plus/ | No numerical extras; separate UI smoke contract |
+| APP_SOURCE.json, SOURCE_SHA256.json, PROTECTED_ORIGINALS.json | Source, release hashes and original-byte protection |
+| RUN_PLAN.cmd | Portable release rerun and integrity checks |
+| provenance/ | Redacted final release log and complete publication privacy inventory |
 | `bench/build_corpus.R` | Builds the contrasts of the 13 datasets with netmeta's `pairwise()` |
 | `bench/reference_netmeta.R` | netmeta reference analyses |
 | `bench/run_engine.mjs` | Runs the app's JavaScript engine on the same contrasts |
@@ -110,7 +156,7 @@ Run time: a few minutes, almost all of it netmeta itself.
 
 ## Cite
 
-Ahmad M. Network meta-analysis in the browser: a tool validated against the R package netmeta [software], v1.0.0. Zenodo; 2026. doi:[10.5281/zenodo.23203451](https://doi.org/10.5281/zenodo.23203451). Machine-readable metadata: `CITATION.cff`.
+Ahmad M. Network meta-analysis in the browser: a tool validated against the R package netmeta [software], v1.1.0; 2026. Release DOI pending assignment. The previous v1.0.0 archive remains at [10.5281/zenodo.23203451](https://doi.org/10.5281/zenodo.23203451). Machine-readable metadata: CITATION.cff.
 
 ## Licence
 

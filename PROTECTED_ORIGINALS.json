@@ -1,0 +1,30 @@
+{
+  "source": "Provided archive v1.0.0 working tree, SHA-256 captured before recut edits",
+  "files": {
+    ".nvmrc": "b911698dc3cf3227d34d0ad6727f1c4408791203c9665de99ab959331a1fb07d",
+    "Dockerfile": "458ea6a7307262df0182db522cab9848032ff9048e4b792bbb92b3c5b316d47b",
+    "reproduce.py": "ebabe9f4459128a49765dc1be54726ee2db8019ed838b00c82d7ba9e70614a9b",
+    "requirements.txt": "4f1f703fdc695e1eeab7ebdf05c36507adc1df7ee5a2dfa649381e9640cff4d9",
+    "analysis/compare_runs.py": "a81f341e3f637130ddc8b750973267dda8b912520dc6b431fb2b2ebd028ec305",
+    "analysis/make_outputs.py": "f0359681112a1c53a5459589eab6b81447e6a1a464095c3028defe66140a886f",
+    "analysis/set_expected.py": "d504e119a10d169e2d3a52918756da4d96f0b531ec3eb1621288135171afa95e",
+    "bench/build_corpus.R": "9ce363f35cb33c1e05ac167443f3eebe8eb52dfa43386a8fd94a1675c922dc23",
+    "bench/install_r_packages.R": "bd3e44393768f0fe1ac9d1db5737021cc5b2700e27f713d3f60814317381c32c",
+    "bench/reference_netmeta.R": "56ce4eaf328efac64ed92f82dd2c667ba454409a391917e09b38a6ded3b6f567",
+    "bench/run_engine.mjs": "f070582fe5cb59adad45bb7b6e61f37fe1720b0a44861319daaa3fbe7edab0f8",
+    "docs/numbers.json": "a248e901c30a337865afc562a5ce61f1cfa0da24a1066fa904d6b33b09368ad7",
+    "expected/paper_values.json": "6af1c32eaa5856d205c44b912cac3c2d173611039d2593f475676912ee48ce9b",
+    "expected/quick_values.json": "465990de05a94947dfc6f6a8d9a34dc000e541b2ff9c654758bf7b2adceee101",
+    "docs/screenshots/captions.md": "b2f28c4a975aacc18d7e78fe49a286f0762f08ac08f018025ebc4f0588d68a2c",
+    "docs/screenshots/capture.mjs": "ecb51e44f93223cd010615c76bbe3674104ad847f2449a80d4666ba374e6caa2",
+    "docs/screenshots/compose.py": "033a57124b2022f27c7788aa46516a4723c7d38e2536aeafb2dfe730563680c5",
+    "docs/screenshots/legibility.json": "b424adec251211251d73f05968570b0a6ca10f40001e924336f49c724847b29f",
+    "docs/screenshots/shots_log.json": "6e347238fd74850f9128aaca728e763b32df8037f5ac1b4728167174eb50d946",
+    "docs/screenshots/step1.png": "0625ce9b7cbe172752aed5876667818f2a10814a813e22998651eff289cb8ba8",
+    "docs/screenshots/step2.png": "ea35bceaac921d1d9c79f465360f61406cac9a3b2698366ebcb1c47c732b15a3",
+    "docs/screenshots/step3.png": "ce260239b375270607433368d66f8223f123b541d02c5f09ccc5692b0674db75",
+    "docs/screenshots/step4.png": "fdfb986d09af5e58ccf51d6f087524aa5f42b6a79f3b107e95d665d062d74466",
+    "docs/screenshots/step5.png": "41d96e2a63e6ec28fbaef2eec71067fbb21c85b8af896704c0cad276626be733",
+    "docs/screenshots/step6.png": "8bd78071768d415ca52139a2b5560f00e58dddb471523f3af07b8482d7ed5a12"
+  }
+}

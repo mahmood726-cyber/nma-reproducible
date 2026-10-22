@@ -1,0 +1,1331 @@
+{
+  "schema": 1,
+  "upstream": {
+    "repository": "https://github.com/mahmood726-cyber/allmeta",
+    "tag": "v1.8.0",
+    "commit": "1cb3f8409c7af75ed41f7e1811f9c502f900fc79",
+    "release_doi": "10.5281/zenodo.23515177",
+    "concept_doi": "10.5281/zenodo.20516880",
+    "identity_source": "TASK.md release identity; files copied from provided blob checkout"
+  },
+  "build_info_note": "Upstream build-info.js is preserved: version v1.8.0, build commit 42a94da2110a02200d0b5bff4c56f636b9cbffa9. This is not the release-tag commit.",
+  "webr_packages": [
+    "CompQuadForm",
+    "MASS",
+    "Matrix",
+    "R6",
+    "RColorBrewer",
+    "Rcpp",
+    "RcppEigen",
+    "Rdpack",
+    "S7",
+    "abind",
+    "bit",
+    "bit64",
+    "boot",
+    "cli",
+    "clipr",
+    "colorspace",
+    "cpp11",
+    "crayon",
+    "digest",
+    "dplyr",
+    "farver",
+    "generics",
+    "ggplot2",
+    "glue",
+    "gtable",
+    "hms",
+    "igraph",
+    "isoband",
+    "labeling",
+    "lattice",
+    "lifecycle",
+    "lme4",
+    "magic",
+    "magrittr",
+    "mathjaxr",
+    "meta",
+    "metabook",
+    "metadat",
+    "metafor",
+    "minqa",
+    "mvtnorm",
+    "netmeta",
+    "nlme",
+    "nloptr",
+    "numDeriv",
+    "pbapply",
+    "pillar",
+    "pkgconfig",
+    "prettyunits",
+    "progress",
+    "purrr",
+    "rbibutils",
+    "readr",
+    "reformulas",
+    "rlang",
+    "scales",
+    "stringi",
+    "stringr",
+    "tibble",
+    "tidyselect",
+    "tzdb",
+    "utf8",
+    "vctrs",
+    "viridisLite",
+    "vroom",
+    "withr",
+    "xml2"
+  ],
+  "files": [
+    {
+      "path": "app/hub/app-style.css",
+      "upstream_path": "hub/app-style.css",
+      "sha256": "475254903d40eebe241574975f1ddff13808c8ad478c17137fda449a3952361f",
+      "reason": "existing archived app file"
+    },
+    {
+      "path": "app/hub/shared/a11y-landmarks.js",
+      "upstream_path": "hub/shared/a11y-landmarks.js",
+      "sha256": "f7a89f3c72dd80f666d16d52592a7e60f45fba62efc9dfeb4c2faf7fb0e8b5a2",
+      "reason": "existing archived app file"
+    },
+    {
+      "path": "app/hub/shared/analysis-lifecycle.js",
+      "upstream_path": "hub/shared/analysis-lifecycle.js",
+      "sha256": "e8a5ff3fd7908469013e17a881083def5451f30a075f34584db8b9c086652afa",
+      "reason": "runtime dependency of nma/index.html"
+    },
+    {
+      "path": "app/hub/shared/plot-export.js",
+      "upstream_path": "hub/shared/plot-export.js",
+      "sha256": "c8423a5ead0fdf213a7798eee68245407e4e4a95f0b25c83b020b57ba4c1d0f1",
+      "reason": "runtime dependency of nma/index.html"
+    },
+    {
+      "path": "app/hub/shared/vendor/jspdf.min.js",
+      "upstream_path": "hub/shared/vendor/jspdf.min.js",
+      "sha256": "98ccf17aa10c20bb1301762618fcc9b6ab3a4e7f26b6071d64d0b41154df3875",
+      "reason": "plot-export.js new URL('vendor/jspdf.min.js', script.src)"
+    },
+    {
+      "path": "app/nma/example-datasets.js",
+      "upstream_path": "nma/example-datasets.js",
+      "sha256": "d785cac20d026e12b8d7f76f297fc51e32fef741b68465ed346768588da35e5d",
+      "reason": "existing archived app file"
+    },
+    {
+      "path": "app/nma/index.html",
+      "upstream_path": "nma/index.html",
+      "sha256": "b1c85af5cf30b44a34528ff97493572195823295268c9450d737fa1b097a6239",
+      "reason": "existing archived app file"
+    },
+    {
+      "path": "app/nma/validate/MANIFEST.json",
+      "upstream_path": "nma/validate/MANIFEST.json",
+      "sha256": "e605ee21f61b133ec25257e4088cc2be2a6bb65cf1c8fa89cfad4535f2cc8f08",
+      "reason": "validation adapter and its unchanged manifest/corpus/provenance"
+    },
+    {
+      "path": "app/nma/validate/README.md",
+      "upstream_path": "nma/validate/README.md",
+      "sha256": "93703e59cefa5c6297599a5b33f7e1eade2a06c33759f58afa2d8d142fb1a765",
+      "reason": "validation adapter and its unchanged manifest/corpus/provenance"
+    },
+    {
+      "path": "app/nma/validate/adapter.js",
+      "upstream_path": "nma/validate/adapter.js",
+      "sha256": "ddd7c2124563436d5eda8c42d810564b8b66afb08a52e0fa0c70a3cdf598bf23",
+      "reason": "runtime dependency of nma/index.html"
+    },
+    {
+      "path": "app/nma/validate/corpus/paper-values.json",
+      "upstream_path": "nma/validate/corpus/paper-values.json",
+      "sha256": "3b364ca7fccf23636df2386eb6e5bb22f62e58b9d6d0246f1a54f26d3af00595",
+      "reason": "validation adapter and its unchanged manifest/corpus/provenance"
+    },
+    {
+      "path": "app/nma/validate/corpus/reference.json",
+      "upstream_path": "nma/validate/corpus/reference.json",
+      "sha256": "bda47f60cfd148ebcc511103ab8a61558b5cde1daffc593e8b02b1c9eff9d74f",
+      "reason": "validation adapter and its unchanged manifest/corpus/provenance"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/R.js",
+      "upstream_path": "r-shiny/shinylive/webr/R.js",
+      "sha256": "76b046ea4e8ab0fd1268db9000bcaf65004f654d969231d339598cdc6d4c80cc",
+      "reason": "webR runtime and source maps loaded from computed base URL"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/R.wasm",
+      "upstream_path": "r-shiny/shinylive/webr/R.wasm",
+      "sha256": "b2e87bafe6245e72b50044dd5678303981491c275a393a30dcaec903dea8a500",
+      "reason": "webR runtime and source maps loaded from computed base URL"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/libRblas.so",
+      "upstream_path": "r-shiny/shinylive/webr/libRblas.so",
+      "sha256": "d4e703f3ae2783d2f63464fe49a9db44e4db48adedd042b54a5a2c74b7f67825",
+      "reason": "webR runtime and source maps loaded from computed base URL"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/libRlapack.so",
+      "upstream_path": "r-shiny/shinylive/webr/libRlapack.so",
+      "sha256": "aedceeaf3bae382dc242afd9c84f9169c8ebaa8cc8130e0e7e4167be5a2a5244",
+      "reason": "webR runtime and source maps loaded from computed base URL"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/library.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/library.data.gz",
+      "sha256": "e085881f95d3adc7aa9c987914f8fcc3134dfdaa11f54f1f8f866933df97dd57",
+      "reason": "webR runtime and source maps loaded from computed base URL"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/library.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/library.js.metadata",
+      "sha256": "5f913740641af3c621bcc4ef2959d2ad67a121c21d437429ea61e2d68acd26c5",
+      "reason": "webR runtime and source maps loaded from computed base URL"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/MASS/MASS_7.3-65.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/MASS/MASS_7.3-65.tgz",
+      "sha256": "e04bbb219fa9d8bec2e175d5609cfbc01268ca619ee4d850bfc261ef0960984f",
+      "reason": "webR netmeta dependency: MASS"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/Matrix/Matrix_1.7-5.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/Matrix/Matrix_1.7-5.tgz",
+      "sha256": "408f6f9226d1849eddefbd00c866c4836ccc1803e6ab5bdfc107d5170585685c",
+      "reason": "webR netmeta dependency: Matrix"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/RColorBrewer/RColorBrewer_1.1-3.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/RColorBrewer/RColorBrewer_1.1-3.tgz",
+      "sha256": "0ec3f647dfcf493c491840dea45e921ac854b2e0dd467e0884cee91333d1563a",
+      "reason": "webR netmeta dependency: RColorBrewer"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/S7/S7_0.2.2.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/S7/S7_0.2.2.tgz",
+      "sha256": "5bcad1a4dcfcc61746da27f670aaa116c8661066a5195384b73a08a1c87e791b",
+      "reason": "webR netmeta dependency: S7"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/bit/bit_4.6.0.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/bit/bit_4.6.0.tgz",
+      "sha256": "b82d8d0bb369a720f6f3a19323df0402f1a6cfc24aff66aa06745c0cd54d922e",
+      "reason": "webR netmeta dependency: bit"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/bit64/bit64_4.8.0.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/bit64/bit64_4.8.0.tgz",
+      "sha256": "ba217f81b267f95d88504b53f8926bdb189c5e4f2207131d712f999c46c2f4bc",
+      "reason": "webR netmeta dependency: bit64"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/boot/boot_1.3-32.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/boot/boot_1.3-32.tgz",
+      "sha256": "acde682846ea7b021301e9369e9d0c4d9022e1b004d57fee45bf3947d9216e2c",
+      "reason": "webR netmeta dependency: boot"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/clipr/clipr_0.8.0.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/clipr/clipr_0.8.0.tgz",
+      "sha256": "758b5afd43ae67cd9da76b6ad73a6ec027d1b23817f511b35e885958e71cbde6",
+      "reason": "webR netmeta dependency: clipr"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/crayon/crayon_1.5.3.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/crayon/crayon_1.5.3.tgz",
+      "sha256": "8dacbd3ab02a50dacceae1459140b1799161d6e14198b3d5fb82f5576a32e86c",
+      "reason": "webR netmeta dependency: crayon"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/dplyr/dplyr_1.1.4.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/dplyr/dplyr_1.1.4.tgz",
+      "sha256": "f5ada05ec1f33fd9b5c478e64fa2272fcebcdba6ff5af938023a16c1baba8b0c",
+      "reason": "webR netmeta dependency: dplyr"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/farver/farver_2.1.2.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/farver/farver_2.1.2.tgz",
+      "sha256": "e520d119d69f53fc09a02b753a20905a2cb10a5db2cbbcab9442e42d26512858",
+      "reason": "webR netmeta dependency: farver"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/generics/generics_0.1.4.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/generics/generics_0.1.4.tgz",
+      "sha256": "826e2ec9660c6ce52bbad2fc3852438aabfd1fadc9d067f41ebd2f760d59bc46",
+      "reason": "webR netmeta dependency: generics"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/ggplot2/ggplot2_4.0.3.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/ggplot2/ggplot2_4.0.3.tgz",
+      "sha256": "46ab0f9dea5e957fb8dfb16e31b5012b67a5d4c58e8fb1a02e42489ef04858cc",
+      "reason": "webR netmeta dependency: ggplot2"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/gtable/gtable_0.3.6.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/gtable/gtable_0.3.6.tgz",
+      "sha256": "c473d1962c7cf06705314fabd44234ca323b998d36ef276cde31db9c2e4ca314",
+      "reason": "webR netmeta dependency: gtable"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/hms/hms_1.1.4.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/hms/hms_1.1.4.tgz",
+      "sha256": "381818b2477f5f15a4ced876e2a5f1c6dd0c45cf47961e7a0af78d018e8143c1",
+      "reason": "webR netmeta dependency: hms"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/isoband/isoband_0.3.0.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/isoband/isoband_0.3.0.tgz",
+      "sha256": "194bb1f35564fe845c524575dfa21c332a6c07cfc1b725726d0cd2cf37c1dfab",
+      "reason": "webR netmeta dependency: isoband"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/labeling/labeling_0.4.3.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/labeling/labeling_0.4.3.tgz",
+      "sha256": "92b8df5d6aef4252e2b4ea53ee1ad1888c5f1c044fbba1652de09f0f24d24a74",
+      "reason": "webR netmeta dependency: labeling"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/lattice/lattice_0.22-9.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/lattice/lattice_0.22-9.tgz",
+      "sha256": "ba5d01351d5a75dbf9193c03ba33ef7141dc27aea835c9dc9e0b1c41544b0822",
+      "reason": "webR netmeta dependency: lattice"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/mathjaxr/mathjaxr_2.0-0.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/mathjaxr/mathjaxr_2.0-0.tgz",
+      "sha256": "0309e3ecbf1363c09f7434c3a02275f98436367d57f20f448090d73bc507945e",
+      "reason": "webR netmeta dependency: mathjaxr"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/metadat/metadat_1.4-0.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/metadat/metadat_1.4-0.tgz",
+      "sha256": "581a0d76b2c0b4a22baa017fee61750740f7a13a22c5a546971d5a64f410a7b2",
+      "reason": "webR netmeta dependency: metadat"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/metafor/metafor_4.8-0.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/metafor/metafor_4.8-0.tgz",
+      "sha256": "746f8ab2d0d85b03a3f07ead0340193a04defd1f871dd6511dd758a9f2ff28b0",
+      "reason": "webR netmeta dependency: metafor"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/mvtnorm/mvtnorm_1.2-4.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/mvtnorm/mvtnorm_1.2-4.tgz",
+      "sha256": "66780ee25dfcaa5094f27b171609e894874b79fb6eef17e498291240a17f62ed",
+      "reason": "webR netmeta dependency: mvtnorm"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/nlme/nlme_3.1-169.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/nlme/nlme_3.1-169.tgz",
+      "sha256": "cb1b992c11ec78fe4529441ab6e684c3a9929661b86890cec3beff7f45ebdb61",
+      "reason": "webR netmeta dependency: nlme"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/numDeriv/numDeriv_2016.8-1.1.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/numDeriv/numDeriv_2016.8-1.1.tgz",
+      "sha256": "d4a872a6f04de8b74fbc24e479152916f87618295b092930f00ec3ce83b7f866",
+      "reason": "webR netmeta dependency: numDeriv"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/pbapply/pbapply_1.7-4.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/pbapply/pbapply_1.7-4.tgz",
+      "sha256": "a256290bd68d1e73b129c9483c7746d71c32e62a0cc25bfe595ce7b6a8b495ff",
+      "reason": "webR netmeta dependency: pbapply"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/pillar/pillar_1.11.1.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/pillar/pillar_1.11.1.tgz",
+      "sha256": "a35503b081fa1636dc019ea706da398889c5a19325d6e364f3b0baea4485a934",
+      "reason": "webR netmeta dependency: pillar"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/pkgconfig/pkgconfig_2.0.3.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/pkgconfig/pkgconfig_2.0.3.tgz",
+      "sha256": "b81a553340eaf99efe388b04a2ea5b1e372dc06502cf2cd4221456df34280719",
+      "reason": "webR netmeta dependency: pkgconfig"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/purrr/purrr_1.2.2.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/purrr/purrr_1.2.2.tgz",
+      "sha256": "aa265c458252f3204dd5e0965a4490d63c7b4444326ff414818b1963e921d4d2",
+      "reason": "webR netmeta dependency: purrr"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/readr/readr_2.2.0.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/readr/readr_2.2.0.tgz",
+      "sha256": "bae58460b4046171e20d5eb4957f820a9897fa6495de0b1389903a831b8954c8",
+      "reason": "webR netmeta dependency: readr"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/scales/scales_1.4.0.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/scales/scales_1.4.0.tgz",
+      "sha256": "01783e9e66fad70e74ef178befff8ddacd46d8353762a917dc658f72fb550c3f",
+      "reason": "webR netmeta dependency: scales"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/stringi/stringi_1.8.7.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/stringi/stringi_1.8.7.tgz",
+      "sha256": "6e167f443d5e104fcf6ab84ebede560f11f9526685e309752de5d1464b1eeb18",
+      "reason": "webR netmeta dependency: stringi"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/stringr/stringr_1.6.0.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/stringr/stringr_1.6.0.tgz",
+      "sha256": "3861d76f2a8a0165ae4454e4dc60583bdc487f9ed43b3365226b1ca55bdcbd65",
+      "reason": "webR netmeta dependency: stringr"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/tibble/tibble_3.3.1.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/tibble/tibble_3.3.1.tgz",
+      "sha256": "832fe8f464315402cdf6f666a8ebb30523e92777f7428d79ab220aa777d1b505",
+      "reason": "webR netmeta dependency: tibble"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/tidyselect/tidyselect_1.2.1.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/tidyselect/tidyselect_1.2.1.tgz",
+      "sha256": "48f331593806b6344ffe12574f7596384a959bf52dfa16c7053d31d86359d631",
+      "reason": "webR netmeta dependency: tidyselect"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/tzdb/tzdb_0.5.0.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/tzdb/tzdb_0.5.0.tgz",
+      "sha256": "6b28220ef969ba3fd6c849ea8ad83a4fce5a76b19ba37cf4d7b8fa935feb95e6",
+      "reason": "webR netmeta dependency: tzdb"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/utf8/utf8_1.2.6.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/utf8/utf8_1.2.6.tgz",
+      "sha256": "75bd089015193c141d8b3661ff5bae07950d493d40cc8ec93fa5e82f87ff55a5",
+      "reason": "webR netmeta dependency: utf8"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/vctrs/vctrs_0.6.5.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/vctrs/vctrs_0.6.5.tgz",
+      "sha256": "93a88b8da351c21bc82f92c6ff2a798fd48408152ca7040b4d0a991d694a622e",
+      "reason": "webR netmeta dependency: vctrs"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/viridisLite/viridisLite_0.4.3.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/viridisLite/viridisLite_0.4.3.tgz",
+      "sha256": "fe770e721a952d67eeac3660cabe699a264d58e44a80a8b345ebd856d4513155",
+      "reason": "webR netmeta dependency: viridisLite"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/vroom/vroom_1.6.5.9000.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/vroom/vroom_1.6.5.9000.tgz",
+      "sha256": "97fdb16ffa72b73187c239e5dc9447f5028df811d5e9db0825222cbdba465e13",
+      "reason": "webR netmeta dependency: vroom"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/packages/xml2/xml2_1.5.2.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/packages/xml2/xml2_1.5.2.tgz",
+      "sha256": "5a4e491ab89c60f9b4123fbaa5ea19e9830efa714f880aa552767e1e95d05a30",
+      "reason": "webR netmeta dependency: xml2"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/CompQuadForm_1.4.4.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/CompQuadForm_1.4.4.tgz",
+      "sha256": "b8934131aba252e0d85fa2511c21a8de2243f297f4256fb2b5b73dfb33665606",
+      "reason": "webR netmeta dependency: CompQuadForm"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/R6_2.6.1.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/R6_2.6.1.tgz",
+      "sha256": "ec53fbd334e2da75cb9df7d01b81c9b7495d93d3627ae89764b9adb4957e28af",
+      "reason": "webR netmeta dependency: R6"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/RcppEigen_0.3.4.0.2.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/RcppEigen_0.3.4.0.2.tgz",
+      "sha256": "723f1003212c227647226ae7b7979dbc1a9c4da90b87e728adbdaa5eb8f67554",
+      "reason": "webR netmeta dependency: RcppEigen"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/Rcpp_1.1.1-1.1.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/Rcpp_1.1.1-1.1.tgz",
+      "sha256": "ed011570038e88749503fdcff69cff503692e1f759dbcc3f4e9c12f18ab70ff2",
+      "reason": "webR netmeta dependency: Rcpp"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/Rdpack_2.6.6.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/Rdpack_2.6.6.tgz",
+      "sha256": "bd00a9cb7543c7dc8357b4bbcf8b3d097ca938e5028bdf0de52f1c09095e5e91",
+      "reason": "webR netmeta dependency: Rdpack"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/abind_1.4-8.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/abind_1.4-8.tgz",
+      "sha256": "cd1965de94fd9b3bb46a9e7d0766bc3cbc574b175c804d6dad5345e90c6da7fc",
+      "reason": "webR netmeta dependency: abind"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/cli_3.6.6.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/cli_3.6.6.tgz",
+      "sha256": "11906f32dbc4341c1407cfd78055f7fc71ff93548329a12aad34e24fae93b201",
+      "reason": "webR netmeta dependency: cli"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/colorspace_2.1-2.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/colorspace_2.1-2.tgz",
+      "sha256": "56546f455db9b6312d5c375b0d68cbca510c13ac05d6b5b06288223b4372b7ad",
+      "reason": "webR netmeta dependency: colorspace"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/cpp11_0.5.4.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/cpp11_0.5.4.tgz",
+      "sha256": "9b722f3721352612621de878ec826af64348cc0bff0e9255b7f89e8c8728ed3f",
+      "reason": "webR netmeta dependency: cpp11"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/digest_0.6.39.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/digest_0.6.39.tgz",
+      "sha256": "3aaa3c2acf4af9fd93c78db33878aaff91568da71c7de14e30a6baafcac0c6b9",
+      "reason": "webR netmeta dependency: digest"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/glue_1.8.1.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/glue_1.8.1.tgz",
+      "sha256": "3e1356f68ef6b3c7f8f41fa872dec796cfc102dd918d83d751cf2458d39f9917",
+      "reason": "webR netmeta dependency: glue"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/igraph_2.1.4.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/igraph_2.1.4.tgz",
+      "sha256": "cdfb3641d343ce712d6cd27517d1046f477b83664f2b04d74f2e9c1a191bed0f",
+      "reason": "webR netmeta dependency: igraph"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/lifecycle_1.0.5.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/lifecycle_1.0.5.tgz",
+      "sha256": "904d21f5f38848a4e35e5abe2afbb70812f62fd2d222fac2c5f302108338d576",
+      "reason": "webR netmeta dependency: lifecycle"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/lme4_2.0-1.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/lme4_2.0-1.tgz",
+      "sha256": "5a0253b2758d2103751eec82a31e8d8f4cd282e215303e2a97489824ebde2e9d",
+      "reason": "webR netmeta dependency: lme4"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/magic_1.6-1.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/magic_1.6-1.tgz",
+      "sha256": "32b517a734cf9a2bcb0c786b61715b3c834d22f4ff66656b275be2a22e42c63d",
+      "reason": "webR netmeta dependency: magic"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/magrittr_2.0.5.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/magrittr_2.0.5.tgz",
+      "sha256": "c9ea8230f1d2447a9cf505d14da39c7cd18479fd0fcb802c271d99a934fdf6e1",
+      "reason": "webR netmeta dependency: magrittr"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/meta_8.3-0.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/meta_8.3-0.tgz",
+      "sha256": "945d0cf9f9e6a04f77f8faab5a84c6265a664b608aae1f37664e298793f5c20c",
+      "reason": "webR netmeta dependency: meta"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/metabook_0.2-0.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/metabook_0.2-0.tgz",
+      "sha256": "3f29b9e293f423f4e4202753483f6786fc3cad8dc8e92eff66fa0425fabb9b0c",
+      "reason": "webR netmeta dependency: metabook"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/minqa_1.2.8.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/minqa_1.2.8.tgz",
+      "sha256": "2c9386bfeaff81bc1a32157f67e51f95b3d3cd446d6940bdc8236eb50694f239",
+      "reason": "webR netmeta dependency: minqa"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/netmeta_3.4-0.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/netmeta_3.4-0.tgz",
+      "sha256": "2368413c87eb4cbb25b02e68e1b53f954da4f1dc345b59f67754a2c1fe7fe74a",
+      "reason": "webR netmeta dependency: netmeta"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/nloptr_2.2.1.9000.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/nloptr_2.2.1.9000.tgz",
+      "sha256": "784adf01e61f5e62706ce2510b7eaf304a65aab735881889c31d26fa32bb25ac",
+      "reason": "webR netmeta dependency: nloptr"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/prettyunits_1.2.0.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/prettyunits_1.2.0.tgz",
+      "sha256": "632e7f90f552717969553b069480c4af4bbee9159e2a75bf152449f0234b369d",
+      "reason": "webR netmeta dependency: prettyunits"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/progress_1.2.3.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/progress_1.2.3.tgz",
+      "sha256": "0b17229231d1783cacd8eba9e33f9588313be49db09d6e660a6baa2b23b62fdb",
+      "reason": "webR netmeta dependency: progress"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/rbibutils_2.4.1.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/rbibutils_2.4.1.tgz",
+      "sha256": "f7e2a89289eb46793a79d79fe4477879f6466b710d3cf2c8a50d80fe49886a17",
+      "reason": "webR netmeta dependency: rbibutils"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/reformulas_0.4.4.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/reformulas_0.4.4.tgz",
+      "sha256": "afdb1b5dd750144cfc2cc45de66aa0f9142d47f43b3af54a65572f3f2521fc56",
+      "reason": "webR netmeta dependency: reformulas"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/rlang_1.2.0.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/rlang_1.2.0.tgz",
+      "sha256": "4f9e79ebf4502da0df88338efab17e707ea9f9c1698f3863f89fb2315ab1fb90",
+      "reason": "webR netmeta dependency: rlang"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/withr_3.0.2.tgz",
+      "upstream_path": "r-shiny/shinylive/webr/repo/bin/emscripten/contrib/4.5/withr_3.0.2.tgz",
+      "sha256": "ca74ea6e4a8be4a8b7425bfaa93213a862aee36c2522e1f5fa97bcc690cc2807",
+      "reason": "webR netmeta dependency: withr"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/repo/manifest.json",
+      "upstream_path": "r-shiny/shinylive/webr/repo/manifest.json",
+      "sha256": "91fb1a0bddcecb705532f3efb1cc7876beda77a35ed16eb2de593fb2ea276fa2",
+      "reason": "webr-runner.js package manifest fetch"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/etc/fonts/fonts.conf",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/etc/fonts/fonts.conf",
+      "sha256": "a93efbf9eec83d72a463f1d52f54043a8afa6ae7cc05609deda73232525e7bc0",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/etc/ssl/cert.pem",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/etc/ssl/cert.pem",
+      "sha256": "64dfd5b1026700e0a0a324964749da9adc69ae5e51e899bf16ff47d6fd0e9a5e",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/doc.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/doc.data.gz",
+      "sha256": "887c1c88e741e0735974c43bd75cfe7d623f3b3e0f85990bde05334986362b7e",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/doc.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/doc.js.metadata",
+      "sha256": "85321ed71f8776da09c409982d3cfd212245c61c8bc228cb59c5d4676f3d4d10",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/base/demo.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/base/demo.data.gz",
+      "sha256": "772f6b5678ba0221f6fb59f142ebe5fe619988b5e1f0fcb1114a9e9f505feacf",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/base/demo.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/base/demo.js.metadata",
+      "sha256": "817a60920b30a5cb29e39c4e3fd3778de49c84555c4bd7f5ad6b79da69671653",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/base/help.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/base/help.data.gz",
+      "sha256": "8cbb1c69cc48b0b5b27aa8dc5b5a84418b2b6f602809d55debb57e779e6e36d4",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/base/help.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/base/help.js.metadata",
+      "sha256": "b038c165e4b969e1192ecd0ae6cae604fa606af558a7086a397a17bccb452d8d",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/base/html.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/base/html.data.gz",
+      "sha256": "3a931d021aa201ef85f4abc0160f4441947deea8269c2d9e0eee18453f4a5a20",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/base/html.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/base/html.js.metadata",
+      "sha256": "7ec8375886b13129e2aaa7db73c9e12901c07f15d258534e94b21266d4b9ad9e",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/compiler/help.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/compiler/help.data.gz",
+      "sha256": "e475924a020c0522c2a7b8d94616b43de6938e91550a58456c6d1fa46fbc95dc",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/compiler/help.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/compiler/help.js.metadata",
+      "sha256": "f939e01a70887408ce8164bddcb0d9198ae50a2d8b8a0808524b51ddba22f3a6",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/compiler/html.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/compiler/html.data.gz",
+      "sha256": "8fdf27e1bd58c64af2846d573ac602cddbe01c855d801b0350ecb200965abd4a",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/compiler/html.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/compiler/html.js.metadata",
+      "sha256": "6f42fbae51421886685ebe850df8790524f0f96d0c0c07a86a145b9779c7bf2e",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/datasets/help.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/datasets/help.data.gz",
+      "sha256": "325d74237ed06403e6ce21bb0bb205f36c790c44afe6b9dc66f33250e37a72b7",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/datasets/help.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/datasets/help.js.metadata",
+      "sha256": "e6639c6814fcd62010cb9b5e58455d85df50b683b9fd5d93cc31b8dd11a85505",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/datasets/html.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/datasets/html.data.gz",
+      "sha256": "88fa5c54f90b2f808535e691bc57b4b1ee40f3adbd54982ce90ed63c0295d54c",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/datasets/html.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/datasets/html.js.metadata",
+      "sha256": "d4b5aacd8b2a21ea37d3dd08e3a150017017a51c3f9704396f4e1b6c1cc1b525",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/grDevices/afm.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/grDevices/afm.data.gz",
+      "sha256": "d95b7d0680165834cec92ba66c0210dd561ada90c4fdb991b2a59f987b29ad55",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/grDevices/afm.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/grDevices/afm.js.metadata",
+      "sha256": "3e88061dfecc14c6cd1386be85d4fef59fe1f964312db41903e471ed74e7cf02",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/grDevices/demo.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/grDevices/demo.data.gz",
+      "sha256": "ed6fdbda792afd05cadf1ca3b568873c71e62783c22784f0c5f0899a1fdf0563",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/grDevices/demo.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/grDevices/demo.js.metadata",
+      "sha256": "2a51924eaee18cbe41bfe8f11ae70f083748d97ef5cbbb77bd3c3a133eaad471",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/grDevices/enc.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/grDevices/enc.data.gz",
+      "sha256": "4ffa00c91977c5feed5cbdfec4ed8ae3fb023dc6e9fa3a305551d963305eb6e5",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/grDevices/enc.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/grDevices/enc.js.metadata",
+      "sha256": "fd6fb479b499da19fe442318ac147bdda2557a087ff19acda5a220fbe6686617",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/grDevices/fonts.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/grDevices/fonts.data.gz",
+      "sha256": "1826792690ca81c105bedd79f0399033ae3fa434213d764039927b72f981edb7",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/grDevices/fonts.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/grDevices/fonts.js.metadata",
+      "sha256": "a59f1e81fa5a21f6b6fb91b6a51ad9944cff3283d5891c9427a3702573b6d65c",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/grDevices/help.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/grDevices/help.data.gz",
+      "sha256": "0f9051c914c9930a582f490d9e4adc573027c9c1259f81976e55914e488e9dd6",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/grDevices/help.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/grDevices/help.js.metadata",
+      "sha256": "a99e271e1a105458622e9a7e8272fa59c3469d85e29f66c4d20c0049e6fb28fd",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/grDevices/html.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/grDevices/html.data.gz",
+      "sha256": "c1d09b0e77ea023bfc05e878e1c5f96378b52c91c4fc631b82cf120ac5a238ae",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/grDevices/html.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/grDevices/html.js.metadata",
+      "sha256": "c2ee0a61b09077dfdd2298c7ddbde6c70dd9a1a35770d6dba0040bb227f25a6e",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/grDevices/libs.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/grDevices/libs.data.gz",
+      "sha256": "99f073ec90fa44ed05a386e055a67d4055583e43f876cc0061c75bd9f81cd8f1",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/grDevices/libs.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/grDevices/libs.js.metadata",
+      "sha256": "3483a14261dd380a6d1e643312773c340356c064451525ecfd2db9324aa7a259",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/graphics/demo.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/graphics/demo.data.gz",
+      "sha256": "6c4b104739383f64d792e27a7aabfaebbfab648ac70848d01dfbf4b59da8804b",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/graphics/demo.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/graphics/demo.js.metadata",
+      "sha256": "0aa484bd6c0eb0f9055a7bdd206c6162016cc84147ea1bf3229671cd56f09898",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/graphics/help.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/graphics/help.data.gz",
+      "sha256": "53dad1bed33cc28640906f21328a77ff115a24c0796216bc97299aff1e41865d",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/graphics/help.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/graphics/help.js.metadata",
+      "sha256": "57c883a8537ec63d79ae4b84f2b9ac5add8c43b151e3f66972c670610e174fb2",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/graphics/html.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/graphics/html.data.gz",
+      "sha256": "41fc071f1c195d8dcd919862437e6504426a98448594c32b4eabf060de335457",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/graphics/html.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/graphics/html.js.metadata",
+      "sha256": "8d19a817255db58f27a72799be256af0ca593575f0290e1d631cf677491a10de",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/grid/doc.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/grid/doc.data.gz",
+      "sha256": "9342b5982ba2b0298026763d29cc3ef4f8aec5a66e8edd34672e4f6ee3305ad1",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/grid/doc.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/grid/doc.js.metadata",
+      "sha256": "1492f7f6298a84226691eaec51ba29879aec29b23b23c1c9e86b04fd34a98eb9",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/grid/help.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/grid/help.data.gz",
+      "sha256": "4a48a2c967d342b5390e95337a80963daa8265a49389d5efff2d5663ce5b20a4",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/grid/help.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/grid/help.js.metadata",
+      "sha256": "674da892fe4074453bdf6285abb98568f9ce2edf60db56c6445f1334a58b1f97",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/grid/html.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/grid/html.data.gz",
+      "sha256": "f14463fe8b85ff8fac3f41b0af9cbcf34a85d739582c2bbd1c2219fc5e51cc22",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/grid/html.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/grid/html.js.metadata",
+      "sha256": "3dbebe2fffc3f9259aa2cf993df381ae3343d02de63b07404f010ec7114a9868",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/methods/help.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/methods/help.data.gz",
+      "sha256": "1e56466ed776939e30ce0d5e85b1043c67c759d0d365743f3083d002cedf8475",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/methods/help.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/methods/help.js.metadata",
+      "sha256": "a284ff3a4afce49cbaa34d97ff4f1f1553c5ce220c2be76e06ad39434920c7a1",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/methods/html.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/methods/html.data.gz",
+      "sha256": "19daad56196824107a9620a150260c8e7fd88cedd35365ef81a5a98d9718fc1b",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/methods/html.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/methods/html.js.metadata",
+      "sha256": "4d671864220e6ddf865f5fff0a516884de4c388a2bc1bace13ffef35b281f3f8",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/parallel.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/parallel.data.gz",
+      "sha256": "90751479399d096105e6242c4af49bfa1c022d3a5ebb11601a232485f110715d",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/parallel.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/parallel.js.metadata",
+      "sha256": "cf8702f3ee1cb7632513c70fd22a3d369dfe1d5838f2661a8829af51cfe3704d",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/splines/help.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/splines/help.data.gz",
+      "sha256": "2d79395f95b494f303802e568ccc6720257a7392bedca2b6179ab1b8630787a8",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/splines/help.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/splines/help.js.metadata",
+      "sha256": "d0be90bd0416b5f0b524ee5865a5e0053b117ce12965604af1244b5a408bc1c8",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/splines/html.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/splines/html.data.gz",
+      "sha256": "28cef69dd383abec3438cf6bd22dc36c7eb9ce27a7351d0e993936c0ba26b15a",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/splines/html.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/splines/html.js.metadata",
+      "sha256": "6b151ef53f53d0d6e0e290fa5c86291aa75d9e68de0c5d8502e19e49b42702c3",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/stats/demo.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/stats/demo.data.gz",
+      "sha256": "4192d25333397023c1d6490703afe1828d38645dbe80ed9ec21fe4e3dc6e01fd",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/stats/demo.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/stats/demo.js.metadata",
+      "sha256": "7e537450a6855a02f5491cf22f48abed526bb1d4d2fd15d3e34725ab3667db5f",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/stats/doc.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/stats/doc.data.gz",
+      "sha256": "b1e8474e1cf898d26d12ca49a3b3f9fca88e1ff5abdc096c85c2b6660486ee59",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/stats/doc.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/stats/doc.js.metadata",
+      "sha256": "86cfafaa90cb278f8999e400680ae8e3c358fa756dc4289b6addc9b9a7ea6044",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/stats/help.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/stats/help.data.gz",
+      "sha256": "247580c268b6cfe396c599916fb3974f4730529c4dd083f5e2efe1b9533149e9",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/stats/help.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/stats/help.js.metadata",
+      "sha256": "b0f54f6550f90724ef4040fb491b9ed694a5d510a7b97bf5a8cc9999717e1a0c",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/stats/html.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/stats/html.data.gz",
+      "sha256": "65328c84b61dec567e259a5612897ada42d3490a8d2e1f8605cdbd253ab56aed",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/stats/html.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/stats/html.js.metadata",
+      "sha256": "54cbad09aa27ec62bd4aa1ba92718a250042fd3b4d1d73726c780c0dbb49ddcc",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/stats4/help.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/stats4/help.data.gz",
+      "sha256": "230f3316fc6d7d8e6e5cdd5f70323417a5868a8e1e5abede7bb7708861170085",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/stats4/help.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/stats4/help.js.metadata",
+      "sha256": "6b89d9b7fbd29ab49e2475250aa299ef49a524ce67e5fe5362e03cde8c4b6624",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/stats4/html.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/stats4/html.data.gz",
+      "sha256": "3f0f747d2803168fc1ce869f523bb1a7bdabc84be1d7fae717adcb436dd9ea77",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/stats4/html.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/stats4/html.js.metadata",
+      "sha256": "cf6e0893f5b2189e07809065b918e5741709e3aabe093b614148db8a65e20491",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/tcltk.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/tcltk.data.gz",
+      "sha256": "5d5614066f11e3f0dfdf3063e62945fa6224ae6946377ac4aa81070a0fc10ade",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/tcltk.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/tcltk.js.metadata",
+      "sha256": "8e280be8d73ed0a5f91aad9bce625e83aa92497878ba0a7e757c9bd333254939",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/tools/help.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/tools/help.data.gz",
+      "sha256": "9c9842b625f82875f6827c15381063c8974480a8428817d3d98bd4a272f10b33",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/tools/help.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/tools/help.js.metadata",
+      "sha256": "a539c931a67085f4fc92e10f05e1cf5346003fd4a5cd825936620f890d2c88ea",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/tools/html.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/tools/html.data.gz",
+      "sha256": "9fe3623e45effd769f41881bb58457ff3058d3be12b89b946e712784c150ef8c",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/tools/html.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/tools/html.js.metadata",
+      "sha256": "8850b7d10a8d246cc6fdaeb7b2457804792ed59318f5f4aa7544601cd7f547fe",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/translations.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/translations.data.gz",
+      "sha256": "5de5454ab449955e417537890300339b6b9157c3c0da7244736f43bbceac27fa",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/translations.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/translations.js.metadata",
+      "sha256": "869d3dcee3b1847b2696d8ac034c54ba07bccf1834569b32a3c2cd45e9db5187",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/translations/DESCRIPTION",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/translations/DESCRIPTION",
+      "sha256": "60572e3af9d3e193ae059f13ff71dfbf2d5df92662d77a9225fe73c6e14e1a5a",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/utils/doc.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/utils/doc.data.gz",
+      "sha256": "37fd2e497f368cccb7230646a4f4283713780fab70f02eb9feacca723adcd713",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/utils/doc.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/utils/doc.js.metadata",
+      "sha256": "14cf4d60dc5883215a640367a659d6f5edd2c33f5f144eff43c34511a19909c4",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/utils/help.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/utils/help.data.gz",
+      "sha256": "9dc4534458e11fa5445d055ad08e9f1b1834f6cdcf35f1e4e4aeeef9657e3b39",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/utils/help.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/utils/help.js.metadata",
+      "sha256": "90648b188ecabf03e7165be6248e8eb44a4ee7e078ec3fdd5e14b7c97cffb863",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/utils/html.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/utils/html.data.gz",
+      "sha256": "40bcc32abface1e76dba300b3bd763cceb5a9bd31a9b0a9dd323d3ff49a0ed4f",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/utils/html.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/utils/html.js.metadata",
+      "sha256": "e0db425a6b58930ad312c46d04ea70849d85660d1409188bcef67064d522d26b",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/utils/misc.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/utils/misc.data.gz",
+      "sha256": "bd524472fa716f37abf3830258281489b3ac3fca9421e45e89b79db4fbbb6ce7",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/utils/misc.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/utils/misc.js.metadata",
+      "sha256": "7e248a6c0ce276772fe22eb83d49128393be9e674e322ab0ce57905e83e6709b",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/webr/help.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/webr/help.data.gz",
+      "sha256": "b04fcb9a8b51a8676c84f157343033804b37c29be6b7936372dcf584e3f060b4",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/webr/help.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/webr/help.js.metadata",
+      "sha256": "5531acaa2b4c41ef9230f2b7fa3dc968b2ee7f083253b6fa93aabffc3c20a465",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/webr/html.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/webr/html.data.gz",
+      "sha256": "06b2081b8ae8a4578897e686fd15f0a99b1f4ae2a9e2e9c6dcc298775a3e594d",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/library/webr/html.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/library/webr/html.js.metadata",
+      "sha256": "ac453f4c063bc86d1ca8b2dae973a1965954105511064adc59354e322456fe6d",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/share.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/share.data.gz",
+      "sha256": "0d3350121013e15fc1543607f3af82d1b34057fb3bf4c7f8912580a9cc87e300",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/lib/R/share.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/lib/R/share.js.metadata",
+      "sha256": "0aeec810fca7698d8813518a30e02b3b3ee9694c09361ea20132dbecbc14b93f",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/share/fonts/NotoSans-Bold.ttf",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/share/fonts/NotoSans-Bold.ttf",
+      "sha256": "87cb2d84472a7d66da659ee47b6cdb9552326e8c128245231f191b6ac72529d9",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/share/fonts/NotoSans-BoldItalic.ttf",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/share/fonts/NotoSans-BoldItalic.ttf",
+      "sha256": "3d367743f371f28671d2764e911a53d7c20ec9b6aa8791d059e7090389fc52a5",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/share/fonts/NotoSans-Italic.ttf",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/share/fonts/NotoSans-Italic.ttf",
+      "sha256": "678288f868807d4d64a6f3b51466871d117d915780381ce9d0ed4b3bcbd06d37",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/share/fonts/NotoSans-Regular.ttf",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/share/fonts/NotoSans-Regular.ttf",
+      "sha256": "f3961a9cde016d41a4879aecda1474d3a36d6bf54fa0e4643de029cc2248b0e8",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/share/fonts/NotoSansMono-Bold.ttf",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/share/fonts/NotoSansMono-Bold.ttf",
+      "sha256": "1100772b2f79c102402a1011df5e2226517d0f40ac553a25fb12fdbad8c11b85",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/share/fonts/NotoSansMono-Regular.ttf",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/share/fonts/NotoSansMono-Regular.ttf",
+      "sha256": "87f8ce0522a6c99b743ee5fc75b4073cfdd575639119672828b7b9944b65b4f4",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/share/fonts/NotoSerif-Bold.ttf",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/share/fonts/NotoSerif-Bold.ttf",
+      "sha256": "24ad531e6b05ddad8c3d89572d2c93eb86a6b74e652ce7ee3c3e171de68e84c3",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/share/fonts/NotoSerif-BoldItalic.ttf",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/share/fonts/NotoSerif-BoldItalic.ttf",
+      "sha256": "1bc4f86502eaa368718f6192bee022ea9a703d5af1c18b7d291212657b63074a",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/share/fonts/NotoSerif-Italic.ttf",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/share/fonts/NotoSerif-Italic.ttf",
+      "sha256": "c4b3c971741ecdb40f5a443bce754e8fe91efe761b6ea10c92be7c3597cdadc4",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/share/fonts/NotoSerif-Regular.ttf",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/share/fonts/NotoSerif-Regular.ttf",
+      "sha256": "a15cfbbc1539d707115111d672d590a3d70d4f74b4c0a315956da20ae19a14e1",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/share/gdal.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/share/gdal.data.gz",
+      "sha256": "edbe02e9726b9df97c074d21c8833400a24cf39c25f4875126ad958ba978e4fa",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/share/gdal.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/share/gdal.js.metadata",
+      "sha256": "de403ded38013ab57931a862d14bcdc33b09997c70de1587ec6719f94360ab25",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/share/proj.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/share/proj.data.gz",
+      "sha256": "95a64391f05c0254b5b4d70e200d863fc0ba5e819bfff8eae89cc446b790a8e4",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/share/proj.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/share/proj.js.metadata",
+      "sha256": "adc4c33a8c963b5059402a2132c59811016cc9c48286b6bd43e68b347a5f4c0c",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/share/udunits.data.gz",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/share/udunits.data.gz",
+      "sha256": "2e3de6659d9ec9192fcb669fc39dfb6e37871e705054b21a404571d4301290bb",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/usr/share/udunits.js.metadata",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/usr/share/udunits.js.metadata",
+      "sha256": "9f8ac349f1d68c23e4d2a4790e328ab3ecc38cd84ef993592170b7d19ef1b6a6",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/var/cache/fontconfig/3830d5c3ddfd5cd38a049b759396e72e-le32d8.cache-9",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/var/cache/fontconfig/3830d5c3ddfd5cd38a049b759396e72e-le32d8.cache-9",
+      "sha256": "68881241850600c0def90ccf0e69fd0430122889450e7be0aa9cd872a7ac70c2",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/vfs/var/cache/fontconfig/CACHEDIR.TAG",
+      "upstream_path": "r-shiny/shinylive/webr/vfs/var/cache/fontconfig/CACHEDIR.TAG",
+      "sha256": "05e7633fb31bf1f6f8d89020c16b9f24587fdf7638e951c9745b192f5fc3b682",
+      "reason": "webR virtual filesystem lazy assets"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/webr-worker.js",
+      "upstream_path": "r-shiny/shinylive/webr/webr-worker.js",
+      "sha256": "02b331738a4948307e6ffa017dec510acf588472e9cddfb44a5e29a814a87435",
+      "reason": "webR runtime and source maps loaded from computed base URL"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/webr-worker.js.map",
+      "upstream_path": "r-shiny/shinylive/webr/webr-worker.js.map",
+      "sha256": "c5bdd7762a245d6fa1211f4d80218df9e75595fc7b929a40988bbef100c7e678",
+      "reason": "webR runtime and source maps loaded from computed base URL"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/webr.cjs",
+      "upstream_path": "r-shiny/shinylive/webr/webr.cjs",
+      "sha256": "5858c92d753e0f2fec942278c173e40b12de9ed1b39e8a40805eb2fd4f4da188",
+      "reason": "webR runtime and source maps loaded from computed base URL"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/webr.cjs.map",
+      "upstream_path": "r-shiny/shinylive/webr/webr.cjs.map",
+      "sha256": "cb837eb8136a906c719853cd537e332c667eb6435fd1ca43d5bb9d0640fa3e39",
+      "reason": "webR runtime and source maps loaded from computed base URL"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/webr.mjs",
+      "upstream_path": "r-shiny/shinylive/webr/webr.mjs",
+      "sha256": "6a13290796384d4f16d6e5be359dd3c3e4b494f02411a8440cba0360bed42bb9",
+      "reason": "webR runtime and source maps loaded from computed base URL"
+    },
+    {
+      "path": "app/r-shiny/shinylive/webr/webr.mjs.map",
+      "upstream_path": "r-shiny/shinylive/webr/webr.mjs.map",
+      "sha256": "bba8cfddd03c7187f41415a5372fdb2bcc8e7af64df6d2e533d0f6091a035424",
+      "reason": "webR runtime and source maps loaded from computed base URL"
+    },
+    {
+      "path": "app/shared/alm-validate.js",
+      "upstream_path": "shared/alm-validate.js",
+      "sha256": "3edd60412195ed34a0890ffc68fa32401d2f375f8a1055cba68ed069afd61e85",
+      "reason": "runtime dependency of nma/index.html"
+    },
+    {
+      "path": "app/shared/app-flow.js",
+      "upstream_path": "shared/app-flow.js",
+      "sha256": "733458866c716ed4f3ecefea64e9374c49b12eb33cd56b9ab5ec0e0cf5eb8c77",
+      "reason": "existing archived app file"
+    },
+    {
+      "path": "app/shared/build-info.js",
+      "upstream_path": "shared/build-info.js",
+      "sha256": "232a5a903b1fcc451fede886d11688a80c0dce736d60a3613cc8ef5d41c94668",
+      "reason": "existing archived app file"
+    },
+    {
+      "path": "app/shared/forced-colors.css",
+      "upstream_path": "shared/forced-colors.css",
+      "sha256": "a967581cb9dfe03bcd6158264353dd8c3fff386d2919143587aa507a24e0c39c",
+      "reason": "existing archived app file"
+    },
+    {
+      "path": "app/shared/ma-comparisons-v1.js",
+      "upstream_path": "shared/ma-comparisons-v1.js",
+      "sha256": "52c278b571c2fdb9a3fc386baf7b8a23cf2191b32550e044d75024cd9222781b",
+      "reason": "existing archived app file"
+    },
+    {
+      "path": "app/shared/ma-methods-v1.js",
+      "upstream_path": "shared/ma-methods-v1.js",
+      "sha256": "998c2e5c424a9433f8ebb4650d6481122fe180d79da377e68bfb908003df1a1e",
+      "reason": "existing archived app file"
+    },
+    {
+      "path": "app/shared/ma-studies-v1.js",
+      "upstream_path": "shared/ma-studies-v1.js",
+      "sha256": "416fce0f8ec6432e432c050f9bfc9005d74ac5ad389744198d8530ea6096cb11",
+      "reason": "existing archived app file"
+    },
+    {
+      "path": "app/shared/nma-multiarm-v1.js",
+      "upstream_path": "shared/nma-multiarm-v1.js",
+      "sha256": "eb917db58e51775f099b5e618e6a21189af7b87b6146f2bb53574aeb3e935e3a",
+      "reason": "existing archived app file"
+    },
+    {
+      "path": "app/shared/webr-runner.js",
+      "upstream_path": "shared/webr-runner.js",
+      "sha256": "ff7fb19de7d5c7678c809cb0bb6366763e861276b8b9fd848373aa028f978f32",
+      "reason": "runtime dependency of nma/index.html"
+    }
+  ]
+}

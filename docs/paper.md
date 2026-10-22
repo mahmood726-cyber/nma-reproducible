@@ -1,5 +1,7 @@
 # Network meta-analysis in a browser: a tool validated against the R package netmeta
 
+> v1.1.0 release (2026-10-22): the Windows rerun passed 410/410 checks; 26/26 analyses agree; 2/2 refusals matched; 48/48 numbers reproduced: ALL PASS. The separate UI smoke passed 5/5, including archived R corpus replay 410/410. See the [final release log](../provenance/run_plan-2026-10-22-release.log) and [tool-version deviations](../RECUT_NOTES.md#finalize-2026-10-22). The manuscript below retains the historical v1.0.0 study and cross-platform evidence; this rerun provides new Windows evidence only. The recut targets allmeta v1.8.0, commit 1cb3f8409c7af75ed41f7e1811f9c502f900fc79, DOI 10.5281/zenodo.23515177. Simulated P(best) is outside the paper's validated outputs; historical screenshots may still display it.
+
 **Mahmood Ahmad**¹ [AUTHOR TO COMPLETE: ORCID, corresponding-author e-mail]
 
 ¹ [AUTHOR TO COMPLETE: affiliation]
@@ -46,13 +48,13 @@ The app needs only a browser and works offline. A user (Figure 1):
 
 ### Validation
 
-We validated allmeta commit 6e753c6. The corpus was all 13 datasets in netmeta 3.7-0 [4], converted to contrasts with netmeta's `pairwise()` and each dataset's documented summary measure (364 studies, 506 contrasts, 52 multi-arm studies; 3–22 treatments; one dataset, parkinson, duplicates Franchini2012). netmeta analysed each with normal and t-based random-effects intervals: 26 analyses. The app's engine ran on the same contrasts. This validation found that earlier app versions dropped an incomplete multi-arm study instead of refusing the network, labelled the league table the wrong way round, and ranked by simulated probabilities assuming smaller effects were better; all were corrected (allmeta PR #78).
+The original v1.0.0 validation used allmeta commit 6e753c6; the v1.1.0 Windows rerun on allmeta v1.8.0 reproduced 48/48 paper numbers on 2026-10-22. The corpus was all 13 datasets in netmeta 3.7-0 [4], converted to contrasts with netmeta's `pairwise()` and each dataset's documented summary measure (364 studies, 506 contrasts, 52 multi-arm studies; 3–22 treatments; one dataset, parkinson, duplicates Franchini2012). netmeta analysed each with normal and t-based random-effects intervals: 26 analyses. The app's engine ran on the same contrasts. This validation found that earlier app versions dropped an incomplete multi-arm study instead of refusing the network, labelled the league table the wrong way round, and ranked by simulated probabilities assuming smaller effects were better; all were corrected (allmeta PR #78).
 
 Agreement required identical refusals and every reported quantity within 10⁻⁹ (relative for estimates, intervals, Q and τ²; absolute for p-values, I² and P-scores).
 
 One command (`python reproduce.py`) runs everything in a canonical Docker image (R 4.6.0, Node 24.15.0). Continuous integration repeats it on Linux, Windows, macOS and Docker and checks every reported number.
 
-## Results
+## Results (historical v1.0.0; reproduced on Windows in v1.1.0)
 
 **Agreement.** netmeta analysed 24 networks and refused 2 (Dong2013, where one three-arm study has an undefined comparison). The app refused the same 2 and agreed on all 24 (Table 1; Figure 3). Estimates and intervals agreed within 10⁻¹², and every quantity within 10⁻¹⁰. All 410 checks passed.
 
@@ -74,12 +76,12 @@ A browser tool can reproduce standard network meta-analysis on published dataset
 
 **Underlying data:** datasets distributed with the R package netmeta 3.7-0 [4], built at run time.
 
-**Extended data:** app, analysis code, expected values, figures and screenshots, archived at Zenodo: [DOI to be added on release] [11]. Licence: MIT.
+**Extended data:** app, analysis code, expected values, figures and screenshots, archived at Zenodo: https://doi.org/10.5281/zenodo.23203451 (v1.0.0) [11]. Licence: MIT.
 
 ## Software availability
 
-- **Source code available from:** https://github.com/mahmood726-cyber/allmeta (`nma/`, `shared/nma-multiarm-v1.js`); validated version: commit 6e753c68644834ce4588c4bdf89366452da3159e
-- **Archived source code at time of publication:** Zenodo. NMA app: reproducible validation against netmeta (v1.0.0). [DOI to be added on release] [11]
+- **Source code available from:** https://github.com/mahmood726-cyber/allmeta (`nma/`, `shared/nma-multiarm-v1.js`); v1.1.0 source: allmeta v1.8.0, commit 1cb3f8409c7af75ed41f7e1811f9c502f900fc79 (release run passed on Windows, 2026-10-22); original validated source: commit 6e753c68644834ce4588c4bdf89366452da3159e
+- **Archived source code at time of publication:** Zenodo. NMA app: reproducible validation against netmeta (v1.0.0). https://doi.org/10.5281/zenodo.23203451 (v1.0.0) [11]
 - **Licence:** MIT
 - **Reproduction:** one click via GitHub Codespaces (free account), a fork's "Run workflow" button, or `python reproduce.py`; verified runs: https://mahmood726-cyber.github.io/nma-reproducible/
 
@@ -107,7 +109,7 @@ The author develops allmeta. [AUTHOR TO CONFIRM: no other competing interests.]
 8. Riley RD, Higgins JPT, Deeks JJ. Interpretation of random effects meta-analyses. BMJ. 2011;342:d549. https://doi.org/10.1136/bmj.d549
 9. Higgins JPT, Thompson SG. Quantifying heterogeneity in a meta-analysis. Stat Med. 2002;21(11):1539–58. https://doi.org/10.1002/sim.1186
 10. Dias S, Welton NJ, Sutton AJ, Caldwell DM, Lu G, Ades AE. Evidence synthesis for decision making 4: inconsistency in networks of evidence based on randomized controlled trials. Med Decis Making. 2013;33(5):641–56. https://doi.org/10.1177/0272989X12455847
-11. Ahmad M. Network meta-analysis in the browser: a tool validated against the R package netmeta (v1.0.0) [software]. Zenodo; 2026. [DOI to be added on release]
+11. Ahmad M. Network meta-analysis in the browser: a tool validated against the R package netmeta (v1.0.0) [software]. Zenodo; 2026. https://doi.org/10.5281/zenodo.23203451 (v1.0.0)
 
 ## Figure and table legends
 
@@ -116,7 +118,7 @@ The author develops allmeta. [AUTHOR TO CONFIRM: no other competing interests.]
 (2) Model options: random effects, normal intervals, larger odds ratios of quitting better, odds ratios shown.
 (3) Network graph with the number of studies per comparison (A) and summary statistics (B).
 (4) Heterogeneity and the decomposition of Q (A) and estimates against no intervention with prediction intervals (B).
-(5) P-scores with the simulated probability of ranking first (A) and the league table, row versus column (B).
+(5) P-scores (A) and the league table, row versus column (B).
 (6) Estimates with t-based intervals (A), the refusal when one comparison of a three-arm study is removed (B), and export buttons (C).
 Panels 3–6 are labelled composites of regions of one page; panels 1 and 2 are single crops.
 
