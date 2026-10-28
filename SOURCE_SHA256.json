@@ -233,7 +233,7 @@
     "app/shared/ma-comparisons-v1.js": "52c278b571c2fdb9a3fc386baf7b8a23cf2191b32550e044d75024cd9222781b",
     "app/shared/ma-methods-v1.js": "998c2e5c424a9433f8ebb4650d6481122fe180d79da377e68bfb908003df1a1e",
     "app/shared/ma-studies-v1.js": "416fce0f8ec6432e432c050f9bfc9005d74ac5ad389744198d8530ea6096cb11",
-    "app/shared/nma-multiarm-v1.js": "eb917db58e51775f099b5e618e6a21189af7b87b6146f2bb53574aeb3e935e3a",
+    "app/shared/nma-multiarm-v1.js": "9c308f1b56de768ffc3d2f1cd153f3e0f73caa489074389e954a39fad21083f3",
     "app/shared/webr-runner.js": "ff7fb19de7d5c7678c809cb0bb6366763e861276b8b9fd848373aa028f978f32",
     "bench/build_corpus.R": "9ce363f35cb33c1e05ac167443f3eebe8eb52dfa43386a8fd94a1675c922dc23",
     "bench/install_r_packages.R": "bd3e44393768f0fe1ac9d1db5737021cc5b2700e27f713d3f60814317381c32c",

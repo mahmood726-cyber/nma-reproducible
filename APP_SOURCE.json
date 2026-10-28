@@ -1318,7 +1318,7 @@
     {
       "path": "app/shared/nma-multiarm-v1.js",
       "upstream_path": "shared/nma-multiarm-v1.js",
-      "sha256": "eb917db58e51775f099b5e618e6a21189af7b87b6146f2bb53574aeb3e935e3a",
+      "sha256": "9c308f1b56de768ffc3d2f1cd153f3e0f73caa489074389e954a39fad21083f3",
       "reason": "existing archived app file"
     },
     {
