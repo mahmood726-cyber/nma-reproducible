@@ -14,10 +14,10 @@
  "all_within_tolerance": 1,
  "checks_total": 410,
  "checks_passed": 410,
- "max_estimates": 2.793321129956894e-13,
- "max_pvalues": 1.8595791573261522e-11,
+ "max_estimates": 3.0819791163594346e-13,
+ "max_pvalues": 1.8591017614255634e-11,
  "max_heterogeneity": 1.1448708415146314e-14,
- "max_pscores": 5.968558980384842e-13,
+ "max_pscores": 5.958566973163215e-13,
  "all_below_1e-10": 1,
  "estimates_below_1e-12": 1,
  "treatments_min": 3,
@@ -50,5 +50,5 @@
  "ex_best": "D",
  "ex_best_pscore": 0.8375827418402236,
  "ex_pscore_A": 0.04788718704931417,
- "ex_netmeta_or_D": 2.4652622912218862
+ "ex_netmeta_or_D": 2.4652622912218844
 }
